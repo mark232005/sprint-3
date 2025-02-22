@@ -3,6 +3,9 @@ import { NoteList } from '../cmps/NoteList.jsx'
 
 
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
+
+
 
 export function NoteIndex() {
 
@@ -29,7 +32,10 @@ export function NoteIndex() {
 
 
     return (
-        <section className="container">
+        <section className="note-index">
+            <button className="new-note-button">
+                <Link to="/note/edit">Add Note</Link>
+            </button>
             <NoteList notes={notes} />
         </section>
     )
