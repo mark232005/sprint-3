@@ -1,5 +1,5 @@
 // note service
-import { loadFromStorage, saveToStorage, makeId } from '../services/util.service.js';
+import { utilService } from './util.service.js';
 import { storageService } from '../services/async-storage.service.js';
 
 
@@ -16,19 +16,22 @@ export const noteService = {
 }
 
 function query(filterBy = {}) {
-    return storageService.query(NOTE_KEY).then(notes => {
-        if (!notes || !notes.length) {
-            notes = loadFromStorage(NOTE_KEY) || _initializeNotes()
-        }
-        if (filterBy.text) {
-            const regExp = new RegExp(filterBy.text, 'i')
-            notes = notes.filter(note => regExp.test(note.info.txt || ''))
-        }
-        if (filterBy.type) {
-            notes = notes.filter(note => note.type === filterBy.type)
-        }
-        return notes
-    })
+    return storageService.query(NOTE_KEY)
+        .then(notes => {
+
+            if (!notes || !notes.length) {
+                notes = _initializeNotes()
+                utilService.saveToStorage(NOTE_KEY, notes)
+            }
+            if (filterBy.text) {
+                const regExp = new RegExp(filterBy.text, 'i')
+                notes = notes.filter(note => regExp.test(note.info.txt || ''))
+            }
+            if (filterBy.type) {
+                notes = notes.filter(note => note.type === filterBy.type)
+            }
+            return notes
+        })
 }
 
 function getById(noteId) {
@@ -38,7 +41,7 @@ function getById(noteId) {
     })
 }
 
-//
+
 function remove(noteId) {
     return storageService.remove(NOTE_KEY, noteId)
 }
