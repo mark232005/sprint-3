@@ -1,17 +1,15 @@
 import { mailService } from "../services/mail.service.js"
 const { useState, useEffect } = React
-const { useParams, Link } = ReactRouterDOM
 
 
-export function MailDetails() {
+export function MailDetails({ mailId }) {
     const [currMail, setCurrMail] = useState(null)
-    const param = useParams()
     useEffect(() => {
         loadMail()
-    }, [param.mailId])
+    }, [mailId])
 
     function loadMail() {
-        mailService.getById(param.mailId).then(
+        mailService.getById(mailId).then(
             mail => setCurrMail(mail)
         )
 
@@ -21,7 +19,7 @@ export function MailDetails() {
     const { body, subject, from, } = currMail
     return (
         <section className="mail-details">
-             <header>
+            <header>
                 <h2>{subject}</h2>
             </header>
             <div>
