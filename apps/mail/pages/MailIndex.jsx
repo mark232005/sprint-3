@@ -1,3 +1,4 @@
+import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 
@@ -6,25 +7,32 @@ const { useEffect, useState } = React
 export function MailIndex() {
 
     const [mails, setMails] = useState(null)
+    const [mailFilter, setMailFilter] = useState(mailService.getDefaultMailFilter())
+
     useEffect(() => {
         loadMails()
-        console.log(mails);
-    }, [])
+    }, [mailFilter])
 
     function loadMails() {
-        mailService.query().then(
+        mailService.query(mailFilter).then(
             (mails) => {
                 setMails(mails)
             })
     }
+    function onSetMailFilter(newMailFilter){
+        setMailFilter(newMailFilter)
+    }
 
-if(!mails) return "Loading...."
+    if (!mails) return "Loading...."
     return (
         <section className="container">
-           <main className="main">
-            <MailList mails={mails}/>
-            
-            </main> 
+            <header>
+                <MailFilter mailFilter={mailFilter} onSetMailFilter={onSetMailFilter} />
+            </header>
+            <main className="main">
+                <MailList mails={mails} />
+
+            </main>
 
         </section>
 
