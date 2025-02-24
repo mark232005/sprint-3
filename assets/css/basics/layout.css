@@ -1,3 +1,5 @@
 .container {
     padding: 0 1em;
+    grid-template-columns:10vw 1fr ;
+    grid-template-rows:10vh 1fr ;
 }
