@@ -15,6 +15,6 @@ export function MailFilter({ onSetMailFilter, mailFilter }) {
     }
 
     return (
-            <input type="text" placeholder="Search" onChange={handleChange} name="search" id="search" value={filterByToEdit.search} />
+        <input type="text" placeholder="Search" onChange={handleChange} name="search" id="search" value={filterByToEdit.search} />
     )
 }
