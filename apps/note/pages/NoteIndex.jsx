@@ -1,5 +1,7 @@
 import { noteService } from '../services/note.service.js'
 import { NoteList } from '../cmps/NoteList.jsx'
+import { NotePreview } from '../cmps/NotePreview.jsx'
+import { NodeFilter } from '../cmps/NodeFilter.jsx'
 
 
 const { useState, useEffect } = React
@@ -37,13 +39,18 @@ export function NoteIndex() {
     }
 
 
+    function onSetFilter(filterBy) {
+        setFilterBy({ ...filterBy })
+    }
 
+   
 
     return (
         <section className="note-index">
             <button className="new-note-button">
                 <Link to="/note/edit">Add Note</Link>
             </button>
+            <NodeFilter filter={filterBy} onSetFilter={onSetFilter} />
             <NoteList
                 notes={notes}
                 onRemoveNote={onRemoveNote}
