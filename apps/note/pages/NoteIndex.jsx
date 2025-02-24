@@ -26,7 +26,15 @@ export function NoteIndex() {
 
 
 
-
+    function onRemoveNote(noteId) {
+        noteService.remove(noteId)
+            .then(() => {
+                setNotes(prevNotes => {
+                    // const removedNote = prevNotes.findIndex(note => note.id === noteId)
+                    return prevNotes.filter(note => note.id !== noteId)
+                })
+            })
+    }
 
 
 
@@ -36,7 +44,10 @@ export function NoteIndex() {
             <button className="new-note-button">
                 <Link to="/note/edit">Add Note</Link>
             </button>
-            <NoteList notes={notes} />
+            <NoteList
+                notes={notes}
+                onRemoveNote={onRemoveNote}
+            />
         </section>
     )
 }
