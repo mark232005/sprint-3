@@ -1,7 +1,5 @@
-// note service
 import { utilService } from './util.service.js';
 import { storageService } from '../services/async-storage.service.js';
-
 
 const NOTE_KEY = 'noteDB'
 
@@ -18,7 +16,6 @@ export const noteService = {
 function query(filterBy = {}) {
     return storageService.query(NOTE_KEY)
         .then(notes => {
-
             if (!notes || !notes.length) {
                 notes = _initializeNotes()
                 utilService.saveToStorage(NOTE_KEY, notes)
@@ -35,12 +32,8 @@ function query(filterBy = {}) {
 }
 
 function getById(noteId) {
-    return storageService.get(NOTE_KEY, noteId).then(note => {
-        if (!note) note = {}
-        return note
-    })
+    return storageService.get(NOTE_KEY, noteId).then(note => note || {})
 }
-
 
 function remove(noteId) {
     return storageService.remove(NOTE_KEY, noteId)
@@ -56,12 +49,8 @@ function getEmptyNote(type = 'NoteTxt', txt = '') {
         createdAt: Date.now(),
         type,
         isPinned: false,
-        style: {
-            backgroundColor: '#fff'
-        },
-        info: {
-            txt
-        }
+        style: { backgroundColor: getNoteColor(type) },
+        info: { txt }
     }
 }
 
@@ -76,8 +65,7 @@ function getFilterFromSearchParams(searchParams) {
     const defaultFilter = getDefaultFilter()
     const filterBy = {}
     for (const field in defaultFilter) {
-        filterBy[field] = searchParams.get(field) ||
-            defaultFilter[field]
+        filterBy[field] = searchParams.get(field) || defaultFilter[field]
     }
     return filterBy
 }
@@ -89,31 +77,23 @@ function _initializeNotes() {
             createdAt: 1112222,
             type: 'NoteTxt',
             isPinned: true,
-            style: {
-                backgroundColor: '#00d'
-            },
-            info: {
-                txt: 'Fullstack Me Baby!'
-            }
+            style: { backgroundColor: getNoteColor('NoteTxt') },
+            info: { txt: 'Fullstack Me Baby!' }
         },
         {
             id: 'n102',
             createdAt: 1112223,
             type: 'NoteImg',
             isPinned: false,
-            info: {
-                url: 'http://some-img/me',
-                title: 'Bobi and Me'
-            },
-            style: {
-                backgroundColor: '#00d'
-            }
+            style: { backgroundColor: getNoteColor('NoteImg') },
+            info: { url: 'https://picsum.photos/id/1/200/300', title: 'Bobi and Me' }
         },
         {
             id: 'n103',
             createdAt: 1112224,
             type: 'NoteTodos',
             isPinned: false,
+            style: { backgroundColor: getNoteColor('NoteTodos') },
             info: {
                 title: 'Get my stuff together',
                 todos: [
@@ -123,4 +103,17 @@ function _initializeNotes() {
             }
         }
     ]
+}
+
+function getNoteColor(type) {
+    const colors = {
+        'NoteTxt': '#FFEB3B', // Yellow
+        'NoteImg': '#4CAF50', // Green
+        'NoteVideo': '#F44336', // Red
+        'NoteTodos': '#2196F3', // Blue
+        'NoteAudio': '#9C27B0', // Purple
+        'NoteCanvas': '#FF9800', // Orange
+        'NoteMap': '#795548'  // Brown
+    }
+    return colors[type] || '#FFFFFF'
 }
