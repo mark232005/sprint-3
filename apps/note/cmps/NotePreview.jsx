@@ -1,5 +1,5 @@
 
-export function NotePreview({ note }) {
+export function NotePreview({ note ,onRemoveNote}) {
 
     return (
         <section className="note-preview">
