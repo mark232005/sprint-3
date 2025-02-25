@@ -42,6 +42,10 @@ export function NoteIndex() {
     function onSetFilter(filterBy) {
         setFilterBy({ ...filterBy })
     }
+    
+    function onUpdateNote(updatedNote) {
+        noteService.save(updatedNote).then(loadNotes);
+    }
 
    
 
@@ -54,6 +58,7 @@ export function NoteIndex() {
             <NoteList
                 notes={notes}
                 onRemoveNote={onRemoveNote}
+                onUpdateNote={onUpdateNote}
             />
         </section>
     )
