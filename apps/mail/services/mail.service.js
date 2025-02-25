@@ -43,6 +43,11 @@ function query(filterBy = {}) {
             if(filterBy.status==='draft'){
                 mails=mails.filter(mail=>mail.sentAt===null)
             }
+            if (filterBy.status==='inbox'){
+                mails=mails.filter(mail=>
+                    mail.sentAt!==null && mail.from!==loggedinUser.email
+                )
+            }
             return mails
         })
 }
@@ -65,7 +70,7 @@ function save(mail) {
 
 function getDefaultMailFilter() {
     return {
-        status: 'indbox',
+        status: 'inbox',
         search: '',
         isRead: false,
         isStared: false,
