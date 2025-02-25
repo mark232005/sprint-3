@@ -1,16 +1,22 @@
 
 
 
-export function NavBar() {
+export function NavBar({ sentMail, setMailFilter,setSelectedMail }) {
+
+
+    function handleOnClick(filterName) {
+        setSelectedMail(null)
+        setMailFilter((prevFilter)=>({...prevFilter,status :filterName}))
+    }
     return (
         <section >
-            <button>Compose</button>
+            <button onClick={() => sentMail(true)}>Compose</button>
             <ul>
-                <li><a href="#">Inbox</a></li>
-                <li><a href="#">Starred</a></li>
-                <li><a href="#">Sent</a></li>
-                <li><a href="#">Draft</a></li>
-                <li><a href="#">Trash</a></li>
+                <li><button onClick={() =>handleOnClick ('inbox')}>Inbox</button></li>
+                <li><button onClick={() =>handleOnClick ('starred')} >Starred</button></li>
+                <li><button  onClick={() =>handleOnClick ('sent')} >Sent</button></li>
+                <li><button  onClick={() =>handleOnClick ('draft')}>Draft</button></li>
+                <li><button  onClick={() =>handleOnClick ('trash')}>Trash</button></li>
             </ul>
         </section>
     )

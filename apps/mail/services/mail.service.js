@@ -3,6 +3,10 @@
 import { storageService } from "../../../services/async-storage.service.js"
 import { utilService } from "../../../services/util.service.js"
 
+const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
 
 export const mailService = {
     query,
@@ -10,6 +14,7 @@ export const mailService = {
     save,
     remove,
     getDefaultMailFilter,
+    loggedinUser
 }
 
 const KEY = 'mailsDB'
@@ -32,6 +37,12 @@ function query(filterBy = {}) {
             if (filterBy.read) {
                 mails = mails.filter(mail => mail.isRead === filterBy.read)
             }
+            if(filterBy.status==='sent'){
+                mails=mails.filter(mail=>mail.from===loggedinUser.email)
+            }
+            if(filterBy.status==='draft'){
+                mails=mails.filter(mail=>mail.sentAt===null)
+            }
             return mails
         })
 }
@@ -53,7 +64,13 @@ function save(mail) {
 }
 
 function getDefaultMailFilter() {
-    return { read: false, search: '' }
+    return {
+        status: 'indbox',
+        search: '',
+        isRead: false,
+        isStared: false,
+        labels: [] 
+    }
 }
 
 
@@ -77,8 +94,8 @@ var gMails = [
         isRead: false,
         sentAt: 1551133930594,
         removedAt: null,
-        from: 'dima@gmail.com',
-        to: 'user@appsus.com'
+        from: 'user@appsus.com',
+        to: 'dima@gmail.com'
     },
     {
         id: 'e103',
@@ -99,8 +116,8 @@ var gMails = [
         isRead: false,
         sentAt: 1551133930594,
         removedAt: null,
-        from: 'momo@momo.com',
-        to: 'user@appsus.com'
+        from: 'user@appsus.com',
+        to: 'momo@momo.com'
     }
 
 ]
