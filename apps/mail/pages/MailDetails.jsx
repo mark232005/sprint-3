@@ -16,14 +16,14 @@ export function MailDetails({ mailId }) {
     }
 
     if (!currMail) return
-    const { body, subject, from, } = currMail
+    const { body, subject, from, to } = currMail
     return (
         <section className="mail-details">
             <header>
                 <h2>{subject}</h2>
             </header>
-            <div>
-                <h3>{from}</h3>
+           <div>
+           {from===mailService.loggedinUser.email ? <h3>TO: {to}</h3>:<h3>{from}</h3>}
                 <p>{body}</p>
             </div>
         </section>
