@@ -1,8 +1,19 @@
+import { ColorInput } from "./dynamic-inputs/ColorInput.jsx";
 
-export function NotePreview({ note, onRemoveNote }) {
-    console.log('note', note)
-    console.log('note.style', note.style.backgroundColor)
+const { useState } = React
 
+export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
+    // const currNoteColor = note.style.backgroundColor
+    // console.log('currNoteColor', currNoteColor)
+    const [noteColor, setNoteColor] = useState(note.style.backgroundColor)
+
+    function handleColorChange(color) {
+        setNoteColor(color)
+
+
+        const updateNoteStyle = { ...note, style: { ...note.style, backgroundColor: color } }
+        onUpdateNote(updateNoteStyle)
+    }
 
     function renderNoteType(note) {
         switch (note.type) {
@@ -28,9 +39,11 @@ export function NotePreview({ note, onRemoveNote }) {
             {renderNoteType(note)}
             <button className="hover" onClick={() => onRemoveNote(note.id)}>Delete</button>
 
+            <ColorInput value={noteColor} onChange={handleColorChange} />
         </section>
     )
 }
+
 
 
 
