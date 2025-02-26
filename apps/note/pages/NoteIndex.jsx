@@ -2,6 +2,7 @@ import { noteService } from '../services/note.service.js'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { NotePreview } from '../cmps/NotePreview.jsx'
 import { NodeFilter } from '../cmps/NodeFilter.jsx'
+import { utilService } from '../services/util.service.js'
 
 
 const { useState, useEffect } = React
@@ -42,12 +43,26 @@ export function NoteIndex() {
     function onSetFilter(filterBy) {
         setFilterBy({ ...filterBy })
     }
-    
+
     function onUpdateNote(updatedNote) {
         noteService.save(updatedNote).then(loadNotes);
     }
 
-   
+    function onDuplicateNote(noteId) {
+        noteService.getById(noteId)
+            .then(note => {
+                const newNote = {
+                    ...note,
+                    createdAt: Date.now(),
+                    isPinned: false
+
+                }
+                noteService.save(newNote).then(loadNotes)
+            })
+    }
+
+
+
 
     return (
         <section className="note-index">
@@ -59,6 +74,7 @@ export function NoteIndex() {
                 notes={notes}
                 onRemoveNote={onRemoveNote}
                 onUpdateNote={onUpdateNote}
+                onDuplicateNote={onDuplicateNote}
             />
         </section>
     )

@@ -6,7 +6,7 @@ const { useState, useEffect } = React
 
 
 
-export function NoteList({ notes, onRemoveNote , onUpdateNote}) {
+export function NoteList({ notes, onRemoveNote , onUpdateNote, onDuplicateNote}) {
 
     const [selectedNote, setSelectedNote] = useState(null)
 
@@ -24,7 +24,10 @@ export function NoteList({ notes, onRemoveNote , onUpdateNote}) {
                 <li className="note-item" key={note.id} onClick={() => handelNoteClick(note)}>
                     <NotePreview
                         note={note}
-                        onRemoveNote={onRemoveNote} />
+                        onRemoveNote={onRemoveNote}
+                        onUpdateNote={onUpdateNote}
+                        onDuplicateNote={onDuplicateNote}
+                         />
 
                 </li>
             ))}
@@ -33,6 +36,7 @@ export function NoteList({ notes, onRemoveNote , onUpdateNote}) {
                     note={selectedNote}
                     onUpdateNote={onUpdateNote}
                     closeModal={closeModal}
+                    
                 />
             )}
         </section>
