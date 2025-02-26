@@ -35,7 +35,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote ,onDuplicateNote}
         <section style={{ backgroundColor: note.style.backgroundColor }} className="note-preview">
             {renderNoteType(note)}
             <button className="delete-Note-Button" onClick={() => onRemoveNote(note.id)}>Delete</button>
-            {/* <button className="duplicate-Note-Button" onClick={() => onDuplicateNote (note.id)}>Duplicate</button> */}
+            <button className="duplicate-Note-Button" onClick={() => onDuplicateNote (note.id)}>Duplicate</button>
 
             <ColorInput value={noteColor} onChange={handleColorChange} />
         </section>

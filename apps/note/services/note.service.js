@@ -43,6 +43,8 @@ function save(note) {
     return note.id ? storageService.put(NOTE_KEY, note) : storageService.post(NOTE_KEY, note)
 }
 
+
+
 function getEmptyNote(type = 'NoteTxt', txt = '') {
     return {
         id: '',

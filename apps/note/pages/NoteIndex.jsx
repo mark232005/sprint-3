@@ -51,13 +51,17 @@ export function NoteIndex() {
     function onDuplicateNote(noteId) {
         noteService.getById(noteId)
             .then(note => {
-                const newNote = {
+                if(!note) return
+
+                const duplicatedNote = {
                     ...note,
+                    id: null,
                     createdAt: Date.now(),
                     isPinned: false
 
                 }
-                noteService.save(newNote).then(loadNotes)
+                console.log('duplicatedNote:', duplicatedNote)
+                noteService.save(duplicatedNote).then(loadNotes)
             })
     }
 
