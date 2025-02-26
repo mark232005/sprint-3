@@ -10,7 +10,7 @@ export function MailFilter({ onSetMailFilter, mailFilter }) {
 
 
     function handleChange({ target }) {
-        const { name, value, type } = target
+        const { name, value} = target
         setFilterByToEdit(prevFilterByToEdit => ({ ...prevFilterByToEdit, [name]: value }))
     }
 

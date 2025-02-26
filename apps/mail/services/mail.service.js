@@ -45,8 +45,13 @@ function query(filterBy = {}) {
             }
             if (filterBy.status==='inbox'){
                 mails=mails.filter(mail=>
-                    mail.sentAt!==null && mail.from!==loggedinUser.email
+                    mail.sentAt!==null && mail.from!==loggedinUser.email&& mail.removedAt===null
                 )
+            }
+            if(filterBy.status==='trash'){
+                mails=mails.filter(mail=>
+                    mail.removedAt!==null)
+
             }
             return mails
         })
