@@ -1,3 +1,4 @@
+import { Header } from "../cmps/Header.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { NavBar } from "../cmps/NavBar.jsx"
@@ -46,9 +47,9 @@ export function MailIndex() {
 
     if (!mails) return "Loading...."
     return (
-        <section className="container grid">
+        <section className="mail-container grid">
             <header className="header">
-                <MailFilter mailFilter={mailFilter} onSetMailFilter={onSetMailFilter} />
+                <Header mailFilter={mailFilter} onSetMailFilter={onSetMailFilter} />
             </header>
             <nav className="sidebar">
                 <NavBar sentMail={setSentMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} />

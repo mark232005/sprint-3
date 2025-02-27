@@ -1,5 +1,11 @@
-.container {
+.mail-container {
     padding: 0 1em;
-    grid-template-columns:10vw 1fr ;
-    grid-template-rows:10vh 1fr ;
+    grid-template-columns:72px 1fr ;
+    grid-template-rows:64px 1fr ;
+}
+.header-container{
+    grid-template-columns:minmax(223px,223px) minmax(324px,800px) 1fr 
+}
+.left-header{
+    grid-template-columns:40px 1fr
 }

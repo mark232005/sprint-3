@@ -1,0 +1,110 @@
+header {
+
+    background-color: #f1f1f1;
+}
+
+.header-container {
+    height: 64px;
+    align-items: center;
+}
+
+.main-menu-btn {
+    grid-area: 1/1/2/2;
+    height: 48px;
+    width: 48px;
+    background-color: transparent;
+    border: none;
+    place-items: center;
+    border-radius: 50%;
+    margin: 4px;
+
+}
+
+.main-menu-btn :hover {
+    background-color: #ddd;
+    place-items: center;
+    border-radius: 50%;
+
+
+}
+
+.main-menu-btn img {
+    padding: 12px;
+    width: 24px;
+    height: 24px;
+
+}
+
+.logo-header {
+    gap: 5px;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+
+}
+
+
+.left-header {
+    grid-area: 1/1/2/2;
+    align-items: center;
+    height: 64px;
+}
+
+.mail-logo {
+    margin-left: 15px;
+    height: 32px;
+    width: 32px;
+
+}
+
+.logo-name {
+    color: #535151;
+}
+
+
+
+
+.input-search {
+    align-items: center;
+    grid-area: 1/1/2/3;
+    background-color: #dbe3e8;
+    padding: 12px;
+    width: 70%;
+    border: none;
+    margin-left: 27px;
+    outline: none;
+}
+
+.search-img {
+    position: absolute;
+    background-color: #dbe3e8;
+    border-radius: 20px;
+    height: 24px;
+    width: 24px;
+    padding: 8px
+}
+
+
+.search-img:hover {
+    background-color: #ddd;
+    place-items: center;
+    border-radius: 50%;
+}
+
+.options-btn {
+    position: absolute;
+    background-color: #dbe3e8;
+    border-radius: 20px;
+    height: 24px;
+    width: 24px;
+    padding: 8px;
+    margin-left: -13px;
+
+
+}
+
+.options-btn:hover {
+    background-color: #ddd;
+    place-items: center;
+    border-radius: 50%;
+}
