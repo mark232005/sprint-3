@@ -10,10 +10,10 @@ export function NodeFilter({ filter, onSetFilter }) {
 
     return (
         <section className="note-filter">
-            <button onClick={() => filterClick('NoteTxt')}>Text</button>
-            <button onClick={() => filterClick('NoteImg')}>Image</button>
-            <button onClick={() => filterClick('NoteTodos')}>Todos</button>
-            {filter.type && <button onClick={() => filterClick('')}>All</button>}
+            <div><button onClick={() => filterClick('NoteTxt')}>Text</button></div>
+            <div><button onClick={() => filterClick('NoteImg')}>Image</button></div>
+            <div><button onClick={() => filterClick('NoteTodos')}>Todos</button></div>
+            <div>{filter.type && <button onClick={() => filterClick('')}>All</button>}</div>
         </section>
     )
 }

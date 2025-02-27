@@ -3,7 +3,9 @@ import { ColorInput } from "./dynamic-inputs/ColorInput.jsx";
 const { useState } = React
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote ,onDuplicateNote}) {
+    console.log('note:', note)
     const [noteColor, setNoteColor] = useState(note.style.backgroundColor)
+
 
     function handleColorChange(color) {
         console.log('color:', color)
