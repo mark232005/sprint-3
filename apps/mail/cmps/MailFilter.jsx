@@ -15,6 +15,16 @@ export function MailFilter({ onSetMailFilter, mailFilter }) {
     }
 
     return (
-        <input type="text" placeholder="Search" onChange={handleChange} name="search" id="search" value={filterByToEdit.search} />
+        <section> 
+            <label htmlFor="search"> <img  className="search-img" src="assets/img/search-icon.svg"/></label>
+            <input className="input-search "
+             type="text" 
+             placeholder="Search"
+              onChange={handleChange}
+               name="search" 
+              id="search" value={filterByToEdit.search} />
+              <img className="options-btn" src="assets/img/options-btn.svg"/>
+
+        </section>
     )
 }
