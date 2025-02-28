@@ -1,12 +1,13 @@
 import { MailFilter } from "./MailFilter.jsx";
 
 
-export function Header({ mailFilter, onSetMailFilter }) {
+export function Header({ mailFilter, onSetMailFilter,toggleOpenMenu }) {
+
 
     return (
         <section className="header-container grid ">
             <div className="left-header grid">
-                <button className="main-menu-btn"> <img src="assets/img/hamburger-btn.svg" /></button>
+                <button className="main-menu-btn" onClick={()=>toggleOpenMenu()}> <img src="assets/img/hamburger-btn.svg" /></button>
                 <div className="logo-header flex">
                     <img className="mail-logo" src="assets/img/mail-logo.svg" />
                     <h2 className="logo-name"> Alufmail</h2>

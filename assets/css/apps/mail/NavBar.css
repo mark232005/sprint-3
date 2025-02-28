@@ -1,0 +1,85 @@
+
+
+
+.nav-bar{
+    background-color: #f1f1f1;
+    height: 100vh;
+}
+.nav-bar:hover {
+position: absolute;
+    width: 223px;
+}
+
+.new-msg-btn{
+    padding: 15px;
+    margin: 8px;
+    border: none;
+    background-color: #c7d8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.new-msg-img{
+    width: 24px;
+    height: 24px;
+}
+.nav-bar:hover .new-msg-btn::after{
+    content: "Compose";
+}    
+
+.img-nav{
+    width: 18px;
+}
+.btn-nav{
+    padding: 10px;
+    margin-left: 13px;
+    border: none;
+    background-color: transparent;
+
+}
+.btn-nav:hover{
+    background-color: #ddd;
+
+}
+.nav-bar:hover .inbox-btn::after{
+    content:" Inbox"
+}
+.nav-bar:hover .starred-btn::after{
+    content:" Starred"
+}
+.nav-bar:hover .sent-btn::after{
+    content:" Sent"
+}
+.nav-bar:hover .draft-btn::after{
+    content:" Draft";
+}
+.nav-bar:hover .trash-btn::after{
+    content:" Trash";
+}
+
+.menuOpen{
+    margin-left: 223px;
+}
+.open-navb-bar{
+    width: 223px;
+
+}
+.open-navb-bar>*.new-msg-btn::after{
+    content: "Compose";
+
+}
+.open-navb-bar .sent-btn::after {
+    content: " Sent";
+}
+.open-navb-bar .inbox-btn::after {
+    content: " Inbox";
+}
+.open-navb-bar .starred-btn::after {
+    content: " Starred";
+}
+.open-navb-bar .draft-btn::after {
+    content: " Draft";
+}
+.open-navb-bar .trash-btn::after {
+    content: " Trash";
+}

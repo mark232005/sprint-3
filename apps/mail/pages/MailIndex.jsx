@@ -14,6 +14,7 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [sentMail, setSentMail] = useState(null)
     const [mailFilter, setMailFilter] = useState(mailService.getDefaultMailFilter())
+    const [isMenuOpen, setIsMenuOpen]=useState(false)
     useEffect(() => {
         loadMails()
     }, [mailFilter])
@@ -44,17 +45,20 @@ export function MailIndex() {
         )
 
     }
+    function toggleOpenMenu(){
+setIsMenuOpen(isMenuOpen=>!isMenuOpen)
+    }
 
     if (!mails) return "Loading...."
     return (
         <section className="mail-container grid">
             <header className="header">
-                <Header mailFilter={mailFilter} onSetMailFilter={onSetMailFilter} />
+                <Header mailFilter={mailFilter} onSetMailFilter={onSetMailFilter} toggleOpenMenu={toggleOpenMenu} />
             </header>
             <nav className="sidebar">
-                <NavBar sentMail={setSentMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} />
+                <NavBar sentMail={setSentMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} isMenuOpen={isMenuOpen} />
             </nav>
-            <main className="main">
+            <main className={isMenuOpen?"main menuOpen":"main"}>
                 {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash} />}
                 {selectedMail && <MailDetails mailId={selectedMail} />}
                 {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} />}
