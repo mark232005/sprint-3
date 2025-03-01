@@ -9,3 +9,15 @@
 .left-header{
     grid-template-columns:40px 1fr
 }
+.main{
+    grid-template-rows: 1fr minmax(10vh,30vh)
+    
+}
+.mail-preview{
+    grid-template-rows: repeat(auto-fill,minmax(20px,60px));
+    grid-template-columns: 43px 30px 1fr 72px;
+    
+}
+.a-mail-preview{
+    grid-template-columns: 168px 618px;
+}

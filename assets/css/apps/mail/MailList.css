@@ -1,1 +1,107 @@
- /* mail list */
+body {
+    background-color: #f1f1f1;
+
+}
+
+.main {
+    height: 100vh;
+    border-radius: 30px;
+    background-color: #ffffff;
+}
+
+.mails-list>*:first-child {
+    margin-top: 15px;
+}
+
+
+.mail-preview {
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.mail-preview:hover{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.email-buttons{
+    display: none; 
+}
+.mail-preview:hover .email-date{
+    display:none; 
+}
+.mail-preview:hover .email-buttons{
+    display:flex; 
+    gap: 8px;
+
+}
+.email-buttons>*{
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 19px;
+}
+
+.a-mail-preview {
+    justify-items: baseline;
+    grid-column: 3/4;
+}
+
+.date-mail {
+    color: #666666;
+    width: 37.22px;
+    height: 15px;
+    grid-column: 4/5;
+
+}
+
+.mail-txt {
+    align-items: baseline;
+}
+
+.body-txt {
+    font-size: 14px;
+    color: #666666;
+}
+
+.checkbox-mail {
+    margin-left: 13px;
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.starred-btn-mail {
+    height: 20px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+
+}
+
+
+.starred-img-mail {
+    height: 20px;
+    width: 19px;
+align-items: center;
+}
+.starred-img-mail:hover{
+    border-radius: 50%;
+    background-color: #ddd
+}
+.trash-img-mail:hover{
+    border-radius: 50%;
+    background-color: #ddd
+
+}
+.share-img:hover{
+    border-radius: 50%;
+    background-color: #ddd
+
+}
+.read-img-mail:hover{
+    border-radius: 50%;
+    background-color: #ddd
+
+}
+.unread{
+    background-color:#f4faff;
+}
