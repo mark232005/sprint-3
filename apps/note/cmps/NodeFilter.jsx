@@ -9,11 +9,12 @@ export function NodeFilter({ filter, onSetFilter }) {
     }
 
     return (
-        <section className="note-filter">
-            <div><button onClick={() => filterClick('NoteTxt')}>Text</button></div>
-            <div><button onClick={() => filterClick('NoteImg')}>Image</button></div>
-            <div><button onClick={() => filterClick('NoteTodos')}>Todos</button></div>
+        <section className="notes-filter-by-type">
+            <i className="fa-regular fa-message" onClick={() => filterClick('NoteTxt')}>  Text</i>
+            <i className="fa-regular fa-square-check" onClick={() => filterClick('NoteImg')}>  Image</i>
+            <i className="fa-regular fa-image" onClick={() => filterClick('NoteTodos')}>  Todos</i>
             <div>{filter.type && <button onClick={() => filterClick('')}>All</button>}</div>
         </section>
     )
 }
+

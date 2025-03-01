@@ -103,9 +103,8 @@ export function NoteIndex() {
 
     return (
         <section className="google-keep-container">
-            <div className="notes-filter-by-type">
-                <NodeFilter filter={filterBy} onSetFilter={onSetFilter} />
-            </div>
+            <NodeFilter filter={filterBy} onSetFilter={onSetFilter} />
+
             <div className="notes-container">
                 <div className="add-note-container">
                     <div className={`create-note-field ${noteType ? 'active' : ''}`}>
