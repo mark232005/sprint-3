@@ -124,10 +124,13 @@ export function NoteIndex() {
                         </div>
                         {noteType === 'NoteTodos' && (
                             <div className="todos-container">
-                                
+
                                 {todos.map((todo, idx) => (
-                                    <div key={idx} className="todo-item">
-                                        <input type="checkbox" />
+
+                                    <div
+                                        key={idx}
+                                        className={`todo-item ${idx === todos.length - 1 ? 'last-todo' : ''}`}
+                                    >                                        <input type="checkbox" />
                                         <input
                                             type="text"
                                             placeholder={`Todo ${idx + 1}`}

@@ -179,3 +179,9 @@ input:focus {
   width: 340px;
   padding: 5px;
 }
+
+.last-todo {
+   border-style: solid none;
+   border-width: 2px;
+   border-color: #564d4d56;
+}
