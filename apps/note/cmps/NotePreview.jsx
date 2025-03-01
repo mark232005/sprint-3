@@ -2,7 +2,7 @@ import { ColorInput } from "./dynamic-inputs/ColorInput.jsx";
 
 const { useState } = React
 
-export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote }) {
+export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote, handelNoteClick }) {
     console.log('note:', note)
     const [noteColor, setNoteColor] = useState(note.style.backgroundColor)
 
@@ -65,16 +65,22 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote 
 
 
     return (
-        <section style={{ backgroundColor: note.style.backgroundColor }} className="note-preview">
-            {renderNoteType(note)}
-            <div className="note-preview-functions">
-                <i className="fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></i>
-                <i className="fa-regular fa-clone" onClick={() => onDuplicateNote(note.id)}></i>
-                <i className="fa-solid fa-palette" onClick={() => <ColorInput value={noteColor} onChange={handleColorChange} />}></i>
+        <section style={{ backgroundColor: note.style.backgroundColor }}
+            className="note-preview"
+            onClick={() => handelNoteClick(note)}>
+            
+            <div className="note-preview">
+                <div className="note-preview-content">
+                {renderNoteType(note)}
+                </div>
+                <div className="note-preview-functions">
+                    <i className="fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></i>
+                    <i className="fa-regular fa-clone" onClick={() => onDuplicateNote(note.id)}></i>
+                    <i className="fa-solid fa-palette" onClick={() => <ColorInput value={noteColor} onChange={handleColorChange} />}></i>
 
-                
+
+                </div>
             </div>
-
         </section>
     )
 }

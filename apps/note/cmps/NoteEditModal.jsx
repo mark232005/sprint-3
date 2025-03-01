@@ -22,7 +22,7 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
         closeModal()
     }
 
-    function handleTodoChnage(idx, newTxt) {
+    function handleTodoChange(idx, newTxt) {
         setEditedNote(prevNote => ({
             ...prevNote,
             info: {
@@ -70,7 +70,7 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                                 <input
                                     type="text"
                                     value={todo.txt}
-                                    onChange={(ev) => handleTodoChnage(idx, ev.target.value)}
+                                    onChange={(ev) => handleTodoChange(idx, ev.target.value)}
                                 />
                             </li>
                         ))}

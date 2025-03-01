@@ -144,6 +144,8 @@
     display: none;
     justify-content: space-between;
     padding: 10px;
+    cursor: pointer;
+
     
  }
  .note-item:hover .note-preview-functions {
