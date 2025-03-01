@@ -24,15 +24,45 @@ body.active-modal {
 }
 .modal-content {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 100px;
+}
+
+.ToDo-List{
+    display: flex;
+    align-items: anchor-center;
+    width: 239px;
+    margin-left: 5px;
+    align-self: start;
+}
+
+.modal-content input {
+    display: flex;
+    padding: 10px;
+    width: 350px;
+    box-sizing: border-box;
+    border: none;
+}
+
+.modal-content .title{
+    display: flex;
+    padding: 10px;
+    width: 350px;
+    box-sizing: border-box;
+    border: none;
+    margin-left: 20px;
+}
+
+.modal-content button{
+    display: flex;
+    align-self: end;
 }
 
 .close-modal {

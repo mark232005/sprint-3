@@ -21,12 +21,13 @@ export function NoteList({ notes, onRemoveNote , onUpdateNote, onDuplicateNote})
     return (
         <section className="note-list">
             {notes.map(note => (
-                <li className="note-item" key={note.id} onClick={() => handelNoteClick(note)}>
+                <li className="note-item" key={note.id}>
                     <NotePreview
                         note={note}
                         onRemoveNote={onRemoveNote}
                         onUpdateNote={onUpdateNote}
                         onDuplicateNote={onDuplicateNote}
+                        handelNoteClick={handelNoteClick}
                          />
 
                 </li>

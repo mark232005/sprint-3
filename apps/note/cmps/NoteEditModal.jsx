@@ -36,6 +36,15 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
         }))
 
     }
+    function handleTitleChange(newTitle) {
+        setEditedNote(prevNote => ({
+            ...prevNote,
+            info: {
+                ...prevNote.info,
+                title: newTitle
+            }
+        }))
+    }
 
     function onToggleTodo(idx) {
         setEditedNote(prevNote => ({
@@ -55,26 +64,23 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
             <div className="overlay"></div>
             <div className="modal-content">
                 {note.type === 'NoteTxt' && (
-                    <textarea
+                    <input
                         name="txt"
                         value={editedNote.info.txt}
                         onChange={handleChange} />
                 )}
                 {note.type === 'NoteTodos' && (
-                        <div>
-                        
-                        <input
+                    <div>
+
+                        <input className="title"
                             type="text"
                             placeholder="Todo List Title"
                             value={editedNote.info.title || ''}
                             onChange={(ev) => handleTitleChange(ev.target.value)}
-                            
+
                         />
-                
-                    
-                    <ul>
                         {editedNote.info.todos.map((todo, idx) => (
-                            <li key={idx}>
+                            <div className="ToDo-List" key={idx}>
                                 <input
                                     type="checkbox"
                                     checked={!!todo.doneAt}
@@ -85,9 +91,9 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                                     value={todo.txt}
                                     onChange={(ev) => handleTodoChange(idx, ev.target.value)}
                                 />
-                            </li>
+                            </div>
                         ))}
-                    </ul>
+
                     </div>
 
                 )}
