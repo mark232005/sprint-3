@@ -36,18 +36,27 @@ export function SentMail({ closeModel, onSentMail }) {
 
     return (
         <section className="sent-mail-model">
-            <div className="sent-mail-header">
-                <h1>Nex Message</h1>
-                <button onClick={() => {
+            <div className="sent-mail-header flex space-between">
+                <h1 className="header-sent">New Message</h1>
+                <button className="close-model" onClick={() => {
                     closeModel(false)
                     pushToDraft()
                 }}>x</button>
             </div>
             <form onSubmit={(event) => sentMailTo(event)}>
-                <input type="email" name="to" placeholder="Recipients" onChange={handleChange} />
-                <input type="text" name="subject" placeholder="Subject" onChange={handleChange} />
-                <input type="text" name="body" onChange={handleChange} />
-                <button>Sent</button>
+                <div className="input-to">
+                    <label htmlFor="to">To:</label>
+                    <input className="input" type="email" name="to" onChange={handleChange} id="to" />
+                </div>
+                <div className="input-subject">
+                    <label htmlFor="subject"></label>
+                    <input className="input" type="text" name="subject" placeholder="Subject" onChange={handleChange} id="subject" />
+                </div>
+                <div className="input-body">
+                    <label htmlFor="body"></label>
+                    <input className="input" type="text" name="body" onChange={handleChange} id="body" />
+                </div>
+                <button className="send-btn">Send</button>
             </form>
 
         </section>

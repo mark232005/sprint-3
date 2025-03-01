@@ -1,0 +1,60 @@
+
+
+.sent-mail-model{
+    position: fixed;
+    background-color: white;
+    height: 500px;
+    width: 550px;
+    bottom: 0;
+    right: 10px; 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.sent-mail-header{
+    background-color: #f0f4f8;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px;
+
+}
+.header-sent{
+    padding: 10px;
+    margin-left: 16px #f0f4f8;
+}
+.close-model{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.close-model:hover{
+    background-color: #ddd;
+
+}
+.input-to{
+    width: 90%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-left: 16px
+}
+.input{
+    border: none;
+    width: 100%;
+}
+.input-subject{
+    width: 90%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-left: 16px
+
+}
+.input-body{
+    width: 90%;
+    margin-left: 16px;
+    height: 300px;
+}
+.send-btn{
+    background-color: #1a73e8;;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
