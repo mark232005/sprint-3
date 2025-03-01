@@ -1,3 +1,4 @@
+import { Fragment } from "react"
 
 const { useState, useEffect } = React
 
@@ -50,7 +51,8 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
     }
 
     return (
-        <div className="modal-overlay">
+        <div className="modal">
+            <div className="overlay"></div>
             <div className="modal-content">
                 {note.type === 'NoteTxt' && (
                     <textarea
@@ -59,6 +61,17 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                         onChange={handleChange} />
                 )}
                 {note.type === 'NoteTodos' && (
+                        <div>
+                        
+                        <input
+                            type="text"
+                            placeholder="Todo List Title"
+                            value={editedNote.info.title || ''}
+                            onChange={(ev) => handleTitleChange(ev.target.value)}
+                            
+                        />
+                
+                    
                     <ul>
                         {editedNote.info.todos.map((todo, idx) => (
                             <li key={idx}>
@@ -75,13 +88,24 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                             </li>
                         ))}
                     </ul>
+                    </div>
 
                 )}
                 {note.type === 'NoteImg' && (
-                    <textarea
-                        name="url"
-                        value={editedNote.info.url}
-                        onChange={handleChange} />
+                    <div>
+                        <input
+                            type="text"
+                            name="title"
+                            value={editedNote.info.title}
+                            onChange={handleChange}
+                        />
+                        <input
+                            type="text"
+                            name="url"
+                            value={editedNote.info.url}
+                            onChange={handleChange}
+                        />
+                    </div>
                 )}
 
                 <button onClick={onSave}>Save</button>
