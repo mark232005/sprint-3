@@ -8,8 +8,9 @@ export function NoteIndex() {
     const [notes, setNotes] = useState(null);
     const [filterBy, setFilterBy] = useState({ text: '', type: '' });
     const [newNoteText, setNewNoteText] = useState('');
-    const [noteType, setNoteType] = useState(''); // Default to text note
+    const [noteType, setNoteType] = useState('');
     const [inputPlaceholder, setInputPlaceholder] = useState('Insert your note');
+    const [todos, setTodos] = useState([]);
 
     useEffect(() => {
         loadNotes();
@@ -30,17 +31,45 @@ export function NoteIndex() {
         setInputPlaceholder(type === 'NoteImg' ? 'Insert image URL' : 'Insert your note');
     }
 
+    function handleTodoTypeChange(type) {
+        setNoteType(type)
+        setInputPlaceholder('Insert your todo tile')
+        setTodos([{ txt: '', doneAt: null }])
+    }
+    function handleTodoChange(idx, value) {
+        const updatedTodos = todos.map((todo, todoIdx) =>
+            idx === todoIdx ? { ...todo, txt: value } : todo
+        );
+        setTodos(updatedTodos);
+    }
+    function addTodo() {
+        setTodos([...todos, { txt: '', doneAt: null }]);
+    }
+
     function onCreateNewNote() {
         if (!newNoteText.trim()) return;
 
         const newNote = noteService.getEmptyNote();
         newNote.type = noteType;
-        newNote.info = noteType === 'NoteImg' ? { url: newNoteText, title: '' } : { txt: newNoteText };
 
+        if (noteType === 'NoteImg') {
+            newNote.info = {
+                url: newNoteText,
+                title: 'New Image Note'
+            };
+        } else if (noteType === 'NoteTodos') {
+            newNote.info = {
+                title: newNoteText,
+                todos
+            }
+        } else {
+            newNote.info = { txt: newNoteText };
+        }
         noteService.save(newNote).then(savedNote => {
             setNotes(prevNotes => [...prevNotes, savedNote]);
             setNewNoteText('');
-        });
+            setNoteType('');
+        })
     }
 
     function onRemoveNote(noteId) {
@@ -88,11 +117,31 @@ export function NoteIndex() {
                                 onChange={handleInputChange}
                             />
                             <div className="note-icons">
-                                <i className="fa-regular fa-message" onClick={() => handleNoteTypeChange('NoteTxt')}></i>
-                                <i className="fa-regular fa-square-check"></i>
+                                <i className="fa-regular fa-message" onClick={onCreateNewNote}></i>
+                                <i className="fa-regular fa-square-check" onClick={() => handleTodoTypeChange('NoteTodos')}></i>
                                 <i className="fa-regular fa-image" onClick={() => handleNoteTypeChange('NoteImg')}></i>
                             </div>
                         </div>
+                        {noteType === 'NoteTodos' && (
+                            <div className="todos-container">
+                                
+                                {todos.map((todo, idx) => (
+                                    <div key={idx} className="todo-item">
+                                        <input type="checkbox" />
+                                        <input
+                                            type="text"
+                                            placeholder={`Todo ${idx + 1}`}
+                                            value={todo.txt}
+                                            onChange={(e) => handleTodoChange(idx, e.target.value)}
+                                        />
+                                        {idx === todos.length - 1 && (
+                                            <button type="button" onClick={addTodo}>➕</button>
+                                        )}
+                                    </div>
+                                ))}
+
+                            </div>
+                        )}
                         {noteType && <div className="bottom-panel">
                             <button className="save-button" onClick={onCreateNewNote}>Save</button>
                         </div>}
