@@ -79,205 +79,75 @@
 }
 
 
-<<<<<<< HEAD
- .create-note-field {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
-
- .insert-txt-field {
-    height: 30px;
-    width: 350px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    border: 2px solid #564d4d56;
-    padding: 3px;
-    box-sizing: border-box;
- }
-
- .insert-txt-field.active {
-    height: 30px;
-    width: 350px;
-    display: flex;
-    align-items: center;
-    padding: 3px;
-    border: none;
-    box-sizing: border-box;
-=======
-.create-note-field {
-   position: relative;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+.create-note-field{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .insert-txt-field {
-   height: 30px;
-   width: 350px;
-   display: flex;
-   align-items: center;
-   border-radius: 8px;
-   border: 2px solid #564d4d56;
-   padding: 3px;
-   box-sizing: border-box;
+  height: 30px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 2px solid #564d4d56;
+  padding: 3px;
+  box-sizing: border-box;
 }
 
 .insert-txt-field.active {
-   height: 30px;
-   width: 350px;
-   display: flex;
-   align-items: center;
-   padding: 3px;
-   border: none;
-   box-sizing: border-box;
->>>>>>> f-first-css-structure
+  height: 30px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: none;
+  box-sizing: border-box;
 
 }
 
-<<<<<<< HEAD
- .create-note-field.active {
-    width: 350px;
-    display: flex;
-    border-radius: 8px;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 2px solid #564d4d56;
-    padding: 3px;
-    flex-direction: column;
- }
-
- .insert-txt-field input {
-    border: none;
-    height: 100%;
-    direction: none;
-    width: 100%;
-    background: transparent;
-=======
 .create-note-field.active {
-   width: 350px;
-   display: flex;
-   border-radius: 8px;
-   flex-direction: column;
-   justify-content: space-between;
-   border: 2px solid #564d4d56;
-   padding: 3px;
-   flex-direction: column;
+  height: 100px;
+  width: 350px;
+  display: flex;
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #564d4d56;
+  padding: 3px;
+  flex-direction: column;
 }
 
-.insert-txt-field input {
-   border: none;
-   height: 100%;
-   direction: none;
-   width: 100%;
-   background: transparent;
->>>>>>> f-first-css-structure
+.insert-txt-field input{
+  border:none;
+  height: 100%;
+  direction: none;
+  width: 100%;
+  background: transparent;
 
 }
 
-<<<<<<< HEAD
- .insert-txt-field i {
-    padding: 8px;
- }
-
- input:focus {
-    outline: none;
-    /* border: 1px solid #ccc;  */
- }
-
- .note-icons {
-    display: flex;
-
- }
-
- .bottom-panel {
-    position: relative;
-    display: flex;
-    align-items: end;
-    width: 100%;
-    padding: 0 10px;
-    justify-content: flex-end;
- }
-
- .todos-container {
-    width: 350px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    padding: 3px;
-    box-sizing: border-box;
-    flex-direction: column;
-    padding: 15px 0 15px;
-    align-items: start;
- }
-
- .todos-container input {
-
-    border: none;
-    height: 100%;
-    direction: none;
-    background: transparent;
-
-
- }
-
- .todo-item {
-   display: flex;
-   align-items: anchor-center;
-   width: 340px;
-   padding: 5px;
-=======
-.insert-txt-field i {
-   padding: 8px;
+.insert-txt-field i{
+     padding: 8px;
 }
 
 input:focus {
-   outline: none;
-   /* border: 1px solid #ccc;  */
+  outline: none;
+  /* border: 1px solid #ccc;  */
 }
 
-.note-icons {
-   display: flex;
-
-}
-
-.bottom-panel {
-   position: relative;
-   display: flex;
-   align-items: end;
-   width: 100%;
-   padding: 0 10px;
-   justify-content: flex-end;
-}
-
-.todos-container {
-   width: 350px;
-   display: flex;
-   align-items: center;
-   border-radius: 8px;
-   padding: 3px;
-   box-sizing: border-box;
-   flex-direction: column;
-   padding: 15px 0 15px;
-   align-items: start;
-}
-
-.todos-container input {
-
-   border: none;
-   height: 100%;
-   direction: none;
-   background: transparent;
-
-
-}
-
-.todo-item {
+.note-icons{
   display: flex;
-  align-items: anchor-center;
-  width: 340px;
-  padding: 5px;
->>>>>>> f-first-css-structure
+
+}
+
+.bottom-panel{
+  position: relative;
+  display: flex;
+  align-items: end;
+  width: 100%;
+  padding: 0 10px;
+  justify-content: flex-end;
 }
