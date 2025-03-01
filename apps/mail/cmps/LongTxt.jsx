@@ -1,5 +1,5 @@
 
-export function LongTxt({ txt, length = 50 }) {
+export function LongTxt({ txt, length = 100 }) {
 
     const textToShow = txt.substring(0, length)
     return (

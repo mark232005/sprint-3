@@ -8,13 +8,13 @@ export function MailList({ mails, setSelectedMail ,onMoveToTrash}) {
     if(!mails) return
     return (
         <section>
-            <ul className="mails-list">
+            <ul className="mails-list clean-list grid">
                 {
                     mails.map(
                         mail =>
-                            <li key={mail.id}>
-                                <MailPreview mail={mail} setSelectedMail={setSelectedMail} />
-                                <button className="on-remove-btn" onClick={()=>moveToTrash(mail.id)}>Remove</button>
+                            <li className="mail-Preview" key={mail.id}>
+                                <MailPreview mail={mail} setSelectedMail={setSelectedMail} moveToTrash={moveToTrash} />
+                                {/* <button className="on-remove-btn" onClick={()=>moveToTrash(mail.id)}>Remove</button> */}
                             </li>
                     )
                 }

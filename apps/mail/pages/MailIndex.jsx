@@ -58,7 +58,7 @@ setIsMenuOpen(isMenuOpen=>!isMenuOpen)
             <nav className="sidebar">
                 <NavBar sentMail={setSentMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} isMenuOpen={isMenuOpen} />
             </nav>
-            <main className={isMenuOpen?"main menuOpen":"main"}>
+            <main className={isMenuOpen?"main menuOpen grid":"main grid"}>
                 {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash} />}
                 {selectedMail && <MailDetails mailId={selectedMail} />}
                 {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} />}
