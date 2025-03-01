@@ -1,0 +1,31 @@
+
+.color-input{
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+    position: absolute;
+
+}
+
+.color-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: whitesmoke 3px solid;
+    padding: 5px;
+    margin: 5px;
+    min-height: 10px;
+    min-width: 10px;
+    cursor: pointer;
+    transition: 0.2s border-width;
+    border-radius: 20px;
+    top: 10%;
+}
+
+
+.items-container {
+    display: flex;          
+    gap: 5px;                
+    flex-wrap: nowrap;       
+    align-items: center;     
+}

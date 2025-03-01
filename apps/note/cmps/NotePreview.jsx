@@ -5,10 +5,11 @@ const { useState } = React
 export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote, handelNoteClick }) {
     console.log('note:', note)
     const [noteColor, setNoteColor] = useState(note.style.backgroundColor)
+    const [showColorPicker, setShowColorPicker] = useState(false);
+
 
 
     function handleColorChange(color) {
-        console.log('color:', color)
         setNoteColor(color)
         const updateNoteStyle = { ...note, style: { ...note.style, backgroundColor: color } }
         onUpdateNote(updateNoteStyle)
@@ -67,18 +68,37 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
     return (
         <section style={{ backgroundColor: note.style.backgroundColor }}
             className="note-preview"
-            onClick={() => handelNoteClick(note)}>
-            
-            <div className="note-preview">
+        >
+
+            <div className="note-preview" onClick={() => handelNoteClick(note)}>
                 <div className="note-preview-content">
-                {renderNoteType(note)}
+                    {renderNoteType(note)}
                 </div>
                 <div className="note-preview-functions">
-                    <i className="fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></i>
-                    <i className="fa-regular fa-clone" onClick={() => onDuplicateNote(note.id)}></i>
-                    <i className="fa-solid fa-palette" onClick={() => <ColorInput value={noteColor} onChange={handleColorChange} />}></i>
+                    <i className="fa-solid fa-trash" onClick={(e) => {
+                        e.stopPropagation();
+                        onRemoveNote(note.id);
+                    }}></i>
+                    <i className="fa-regular fa-clone" onClick={(e) => {
+                        e.stopPropagation();
+                        onDuplicateNote(note.id);
+                    }}></i>
+                    <i className="fa-solid fa-palette" onClick={(e) => {
+                        e.stopPropagation();
+                        setShowColorPicker(!showColorPicker);
+                    }}></i>
 
-
+                    {showColorPicker && (
+                        <div onClick={(e) => e.stopPropagation()}>
+                        <ColorInput
+                            value={noteColor}
+                            handleColorChange={(color) => {
+                                handleColorChange(color)
+                                // setShowColorPicker(false)
+                            }}
+                        />
+                        </div>
+                    )}
                 </div>
             </div>
         </section>
