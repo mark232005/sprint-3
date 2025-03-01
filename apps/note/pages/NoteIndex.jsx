@@ -5,12 +5,12 @@ import { NodeFilter } from '../cmps/NodeFilter.jsx';
 const { useState, useEffect } = React;
 
 export function NoteIndex() {
-    const [notes, setNotes] = useState(null);
-    const [filterBy, setFilterBy] = useState({ text: '', type: '' });
-    const [newNoteText, setNewNoteText] = useState('');
-    const [noteType, setNoteType] = useState('');
-    const [inputPlaceholder, setInputPlaceholder] = useState('Insert your note');
-    const [todos, setTodos] = useState([]);
+    const [notes, setNotes] = useState(null)
+    const [filterBy, setFilterBy] = useState({ text: '', type: '' })
+    const [newNoteText, setNewNoteText] = useState('')
+    const [noteType, setNoteType] = useState('')
+    const [inputPlaceholder, setInputPlaceholder] = useState('Insert your note')
+    const [todos, setTodos] = useState([])
 
     useEffect(() => {
         loadNotes();

@@ -6,6 +6,7 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
     const [editedNote, setEditedNote] = useState({ ...note })
 
 
+
     function handleChange({ target }) {
         const { name, value } = target
         setEditedNote(prevNote => ({
@@ -58,6 +59,15 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
             }
         }))
     }
+    function addTodo() {
+        setEditedNote(prevNote => ({
+            ...prevNote,
+            info: {
+                ...prevNote.info,
+                todos: [...prevNote.info.todos, { txt: '', doneAt: null }]
+            }
+        }))
+    }
 
     return (
         <div className="modal">
@@ -91,6 +101,9 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                                         value={todo.txt}
                                         onChange={(ev) => handleTodoChange(idx, ev.target.value)}
                                     />
+                                    {idx === editedNote.info.todos.length - 1 && (
+                                        <i class="fa-regular fa-plus" onClick={addTodo}></i>
+                                    )}
                                 </div>
                             ))}
 
