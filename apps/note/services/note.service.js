@@ -109,10 +109,10 @@ function _initializeNotes() {
 
 function getNoteColor(type) {
     const colors = {
-        'NoteTxt': '#FFEB3B', // Yellow
-        'NoteImg': '#4CAF50', // Green
-        'NoteVideo': '#F44336', // Red
-        'NoteTodos': '#2196F3', // Blue
+        'NoteTxt': '#FFDDC1', 
+        'NoteImg': '#FFCBCB', 
+        'NoteVideo': '#B5EAD7', 
+        'NoteTodos': '#E2F0CB', // Blue
         'NoteAudio': '#9C27B0', // Purple
         'NoteCanvas': '#FF9800', // Orange
         'NoteMap': '#795548'  // Brown

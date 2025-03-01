@@ -127,9 +127,15 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                         </div>
                     )}
 
-                    <button onClick={onSave}>Save</button>
+                    <i class="fa-regular fa-floppy-disk" onClick={onSave}>Save</i>
                 </div>
             </div>
         </div>
     )
 }
+
+
+
+
+
+

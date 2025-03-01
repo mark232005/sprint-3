@@ -15,6 +15,7 @@
     flex-direction: column;
     margin-top: 25px;
     padding: 0 10px;
+    width: 200px;
  }
 
  .notes-filter-by-type i {
@@ -66,6 +67,10 @@
     justify-content: space-around;
  }
 
+ .save-button{
+   cursor: pointer;
+   font-size: 13px;
+ }
 
 
  .note-list {
@@ -74,7 +79,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-
+    margin: 20px;
     gap: 15px;
  }
 
@@ -91,13 +96,13 @@
 
  .note-preview {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
+    border: 1px solid #564d4d56;
 
  }
 
@@ -134,23 +139,25 @@
     width: 239px;
     margin-left: 5px;
  }
+
  .todo-item .done {
-   text-decoration: line-through;
-   
-}
+    text-decoration: line-through;
+
+ }
 
 
-.note-preview-functions  {
+ .note-preview-functions {
     display: none;
     justify-content: space-between;
     padding: 10px;
     cursor: pointer;
 
-    
+
  }
+
  .note-item:hover .note-preview-functions {
-   display: flex;
-}
+    display: flex;
+ }
 
 
  .create-note-field {

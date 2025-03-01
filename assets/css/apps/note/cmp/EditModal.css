@@ -60,11 +60,17 @@ body.active-modal {
     margin-left: 20px;
 }
 
-.modal-content button{
+.modal-content i{
     display: flex;
     align-self: end;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
 }
 
+.modal-content i:hover{
+    cursor: pointer;
+}
 .close-modal {
     position: absolute;
     top: 10px;

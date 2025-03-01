@@ -146,8 +146,8 @@ export function NoteIndex() {
                             </div>
                         )}
                         {noteType && <div className="bottom-panel">
-                            <button className="save-button" onClick={onCreateNewNote}>Save</button>
-                        </div>}
+                            <i class="fa-regular fa-floppy-disk save-button" onClick={onCreateNewNote}>Save</i>
+                            </div>}
                     </div>
                 </div>
                 <NoteList
