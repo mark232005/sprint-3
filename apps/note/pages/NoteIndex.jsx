@@ -130,7 +130,8 @@ export function NoteIndex() {
                                     <div
                                         key={idx}
                                         className={`todo-item ${idx === todos.length - 1 ? 'last-todo' : ''}`}
-                                    >                                        <input type="checkbox" />
+                                    >
+                                        <input type="checkbox" />
                                         <input
                                             type="text"
                                             placeholder={`Todo ${idx + 1}`}
@@ -138,7 +139,7 @@ export function NoteIndex() {
                                             onChange={(e) => handleTodoChange(idx, e.target.value)}
                                         />
                                         {idx === todos.length - 1 && (
-                                            <button type="button" onClick={addTodo}>➕</button>
+                                            <i class="fa-regular fa-plus" onClick={addTodo}></i>
                                         )}
                                     </div>
                                 ))}

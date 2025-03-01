@@ -185,3 +185,9 @@ input:focus {
    border-width: 2px;
    border-color: #564d4d56;
 }
+
+
+.todo-item i {
+   margin-left: auto;
+   cursor: pointer;
+}
