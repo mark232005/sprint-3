@@ -101,6 +101,7 @@
 
  }
 
+
  .note-preview p {
     text-align: justify;
     text-justify: inter-word;
@@ -135,7 +136,18 @@
  }
  .todo-item .done {
    text-decoration: line-through;
-   color: gray;
+   
+}
+
+
+.note-preview-functions  {
+    display: none;
+    justify-content: space-between;
+    padding: 10px;
+    
+ }
+ .note-item:hover .note-preview-functions {
+   display: flex;
 }
 
 

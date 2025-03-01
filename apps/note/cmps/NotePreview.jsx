@@ -16,24 +16,24 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote 
 
 
 
-    function toggleTodoStatus(note,noteId, todoIdx) {
+    function toggleTodoStatus(note, noteId, todoIdx) {
         const updatedNotes = notes.map(note => {
             if (note.id !== noteId) return note
-    
+
             const updatedTodos = note.info.todos.map((todo, idx) => {
                 if (idx === todoIdx) {
                     return { ...todo, doneAt: todo.doneAt ? null : Date.now() }
                 }
                 return todo
             })
-    
+
             return { ...note, info: { ...note.info, todos: updatedTodos } }
         })
-    
+
         setNotes(updatedNotes);
         noteService.save(updatedNotes.find(note => note.id === noteId))
     }
-    
+
 
     function renderNoteType(note) {
         switch (note.type) {
@@ -51,9 +51,9 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote 
                             <input
                                 type="checkbox"
                                 checked={!!todo.doneAt}
-                                onChange={() => toggleTodoStatus(note,note.id, idx)}
+                                onChange={() => toggleTodoStatus(note, note.id, idx)}
                             />
-                            <li  className={todo.doneAt ? 'done' : ''}>{todo.txt}</li>
+                            <li className={todo.doneAt ? 'done' : ''}>{todo.txt}</li>
                         </div>))}
                 </div>
             default:
@@ -67,10 +67,14 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote 
     return (
         <section style={{ backgroundColor: note.style.backgroundColor }} className="note-preview">
             {renderNoteType(note)}
-            <button className="delete-Note-Button" onClick={() => onRemoveNote(note.id)}>Delete</button>
-            <button className="duplicate-Note-Button" onClick={() => onDuplicateNote(note.id)}>Duplicate</button>
+            <div className="note-preview-functions">
+                <i className="fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></i>
+                <i className="fa-regular fa-clone" onClick={() => onDuplicateNote(note.id)}></i>
+                <i className="fa-solid fa-palette" onClick={() => <ColorInput value={noteColor} onChange={handleColorChange} />}></i>
 
-            <ColorInput value={noteColor} onChange={handleColorChange} />
+                
+            </div>
+
         </section>
     )
 }
