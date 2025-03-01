@@ -1,90 +1,90 @@
  /* note index */
 
  .google-keep-container {
-    width: 100%;
-    display: grid;
-    grid:
-       "notes-filter-by-type notes-container" 1fr / auto 1fr;
-    gap: 1px;
- }
+   width: 100%;
+   display: grid;
+   grid:
+      "notes-filter-by-type notes-container" 1fr / auto 1fr;
+   gap: 1px;
+}
 
- .notes-filter-by-type {
-    display: flex;
-    justify-content: space-between;
- }
+.notes-filter-by-type {
+   display: flex;
+   justify-content: space-between;
+}
 
- .notes-container {
-    /* width: 100%; */
-    display: grid;
-    grid:
-       "add-note-container" auto "notes-list" 1fr;
- }
+.notes-container {
+   /* width: 100%; */
+   display: grid;
+   grid:
+      "add-note-container" auto "notes-list" 1fr;
+}
 
- .add-note-container {
-    display: flex;
-    grid-area: add-note-container;
-    justify-content: space-around;
- }
-
-
-
- .note-list {
-    list-style: none;
-    padding: 15px 0 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-
-    gap: 15px;
- }
-
- .note-list li {
-    display: flex;
-
-    flex-direction: column;
-    align-self: stretch;
-    align-items: center;
-    max-width: 400px;
-    width: 100%;
-    max-width: 300px;
-
- }
-
- .note-preview {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px;
+.add-note-container {
+   display: flex;
+   grid-area: add-note-container;
+   justify-content: space-around;
+}
 
 
- }
 
- .note-preview p {
-    text-align: justify;
-    text-justify: inter-word;
-    white-space: nowrap;
-    width: 100%;
- }
+.note-list {
+   list-style: none;
+   padding: 15px 0 0;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+
+   gap: 15px;
+}
+
+.note-list li {
+   display: flex;
+
+   flex-direction: column;
+   align-self: stretch;
+   align-items: center;
+   max-width: 400px;
+   width: 100%;
+   max-width: 300px;
+
+}
+
+.note-preview {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   text-align: center;
+   border-radius: 10px;
 
 
- .note-preview img {
-    max-width: 100%;
-    max-height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
- }
+}
+
+.note-preview p {
+   text-align: justify;
+   text-justify: inter-word;
+   white-space: nowrap;
+   width: 100%;
+}
 
 
- .create-note-field{
+.note-preview img {
+   max-width: 100%;
+   max-height: 150px;
+   object-fit: cover;
+   border-radius: 10px;
+}
+
+
+.create-note-field {
    position: relative;
    display: flex;
    justify-content: center;
    align-items: center;
- }
+}
 
 .insert-txt-field {
    height: 30px;
@@ -95,9 +95,9 @@
    border: 2px solid #564d4d56;
    padding: 3px;
    box-sizing: border-box;
- }
+}
 
- .insert-txt-field.active {
+.insert-txt-field.active {
    height: 30px;
    width: 350px;
    display: flex;
@@ -106,10 +106,9 @@
    border: none;
    box-sizing: border-box;
 
- }
+}
 
 .create-note-field.active {
-   height: 100px;
    width: 350px;
    display: flex;
    border-radius: 8px;
@@ -118,36 +117,65 @@
    border: 2px solid #564d4d56;
    padding: 3px;
    flex-direction: column;
- }
+}
 
- .insert-txt-field input{
-   border:none;
+.insert-txt-field input {
+   border: none;
    height: 100%;
    direction: none;
    width: 100%;
    background: transparent;
 
- }
+}
 
- .insert-txt-field i{
-      padding: 8px;
- }
+.insert-txt-field i {
+   padding: 8px;
+}
 
- input:focus {
+input:focus {
    outline: none;
    /* border: 1px solid #ccc;  */
 }
 
-.note-icons{
+.note-icons {
    display: flex;
 
 }
 
-.bottom-panel{
+.bottom-panel {
    position: relative;
    display: flex;
    align-items: end;
    width: 100%;
    padding: 0 10px;
    justify-content: flex-end;
+}
+
+.todos-container {
+   width: 350px;
+   display: flex;
+   align-items: center;
+   border-radius: 8px;
+   padding: 3px;
+   box-sizing: border-box;
+   flex-direction: column;
+   padding: 15px 0 15px;
+   align-items: start;
+}
+
+.todos-container input {
+
+   border: none;
+   height: 100%;
+   direction: none;
+   background: transparent;
+
+
+}
+
+.todo-item {
+  display: flex;
+  align-items: anchor-center;
+  width: 340px;
+  padding: 5px;
 }
