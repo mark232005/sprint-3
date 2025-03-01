@@ -7,13 +7,47 @@
       "notes-filter-by-type notes-container" 1fr / auto 1fr;
    gap: 1px;
 }
-
 .notes-filter-by-type {
    display: flex;
-   justify-content: space-between;
+   /* gap: 30px;  */
+   box-sizing: border-box; 
    flex-direction: column;
-   width: 280px;
-   padding: 10px;}
+   margin-top: 25px;  
+   padding: 0 10px; 
+}
+.notes-filter-by-type i{
+   height: 40px;
+   font-size: 13px;
+   cursor: pointer;
+   color: #202124;
+   display: flex;
+   align-items: center;
+   
+   font-weight: 500;
+}
+
+.notes-filter-by-type i:hover {
+   cursor: pointer;
+   border-style: solid none;
+   border-width: 1px;
+   border-color: #564d4d56;
+
+}
+.notes-filter-by-type i span {
+   font-family: 'Roboto', sans-serif;
+   margin-left: 8px; 
+}
+.notes-filter-by-type h2{
+   font-size: 16px;
+   font-weight: 500;
+   color: #202124;
+   margin-bottom: 10px;
+   font-family: 'Roboto', sans-serif;
+}
+
+
+
+
 
 .notes-container {
    /* width: 100%; */
