@@ -95,7 +95,7 @@
  }
 
  .note-preview {
-    width: 100%;
+    max-width: 238px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
