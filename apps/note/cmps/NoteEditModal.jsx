@@ -102,7 +102,7 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                                         onChange={(ev) => handleTodoChange(idx, ev.target.value)}
                                     />
                                     {idx === editedNote.info.todos.length - 1 && (
-                                        <i class="fa-regular fa-plus" onClick={addTodo}></i>
+                                        <i className="fa-regular fa-plus" onClick={addTodo}></i>
                                     )}
                                 </div>
                             ))}
@@ -127,7 +127,7 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                         </div>
                     )}
 
-                    <i class="fa-regular fa-floppy-disk" onClick={onSave}>Save</i>
+                    <i className="fa-regular fa-floppy-disk" onClick={onSave}>Save</i>
                 </div>
             </div>
         </div>
