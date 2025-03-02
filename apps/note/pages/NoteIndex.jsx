@@ -148,7 +148,7 @@ export function NoteIndex() {
                     onDuplicateNote={onDuplicateNote}
                     onTogglePin={onTogglePin}
                 />
-                <h3>Pinned Notes</h3>
+                <h3>Other Notes</h3>
                 <NoteList
                     notes={unpinnedNotes}
                     onRemoveNote={onRemoveNote}
