@@ -1,6 +1,8 @@
 import { noteService } from '../services/note.service.js';
 import { NoteList } from '../cmps/NoteList.jsx';
 import { NodeFilter } from '../cmps/NodeFilter.jsx';
+import { NoteAddNew } from '../cmps/NoteAddNew.jsx';
+
 
 const { useState, useEffect } = React;
 
@@ -107,49 +109,19 @@ export function NoteIndex() {
 
             <div className="notes-container">
                 <div className="add-note-container">
-                    <div className={`create-note-field ${noteType ? 'active' : ''}`}>
-                        <div className={`insert-txt-field ${noteType ? 'active' : ''}`} >
-                            <input
-                                type="text"
-                                placeholder={inputPlaceholder}
-                                value={newNoteText}
-                                onChange={handleInputChange}
-                            />
-                            <div className="note-icons">
-                                <i className="fa-regular fa-message" onClick={onCreateNewNote}></i>
-                                <i className="fa-regular fa-square-check" onClick={() => handleTodoTypeChange('NoteTodos')}></i>
-                                <i className="fa-regular fa-image" onClick={() => handleNoteTypeChange('NoteImg')}></i>
-                            </div>
-                        </div>
-                        {noteType === 'NoteTodos' && (
-                            <div className="todos-container">
-
-                                {todos.map((todo, idx) => (
-
-                                    <div
-                                        key={idx}
-                                        className={`todo-item ${idx === todos.length - 1 ? 'last-todo' : ''}`}
-                                    >
-                                        <input type="checkbox" />
-                                        <input
-                                            type="text"
-                                            placeholder={`Todo ${idx + 1}`}
-                                            value={todo.txt}
-                                            onChange={(e) => handleTodoChange(idx, e.target.value)}
-                                        />
-                                        {idx === todos.length - 1 && (
-                                            <i class="fa-regular fa-plus" onClick={addTodo}></i>
-                                        )}
-                                    </div>
-                                ))}
-
-                            </div>
-                        )}
-                        {noteType && <div className="bottom-panel">
-                            <i class="fa-regular fa-floppy-disk save-button" onClick={onCreateNewNote}>Save</i>
-                            </div>}
+                    <NoteAddNew
+                        noteType={noteType}
+                        inputPlaceholder={inputPlaceholder}
+                        newNoteText={newNoteText}
+                        handleInputChange={handleInputChange}
+                        handleNoteTypeChange={handleNoteTypeChange}
+                        handleTodoTypeChange={handleTodoTypeChange}
+                        todos={todos}
+                        handleTodoChange={handleTodoChange}
+                        addTodo={addTodo}
+                        onCreateNewNote={onCreateNewNote}
+                    />
                     </div>
-                </div>
                 <NoteList
                     notes={notes}
                     onRemoveNote={onRemoveNote}
@@ -158,5 +130,5 @@ export function NoteIndex() {
                 />
             </div>
         </section>
-    );
+    )
 }
