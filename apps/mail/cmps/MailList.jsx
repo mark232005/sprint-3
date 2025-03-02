@@ -4,7 +4,6 @@ export function MailList({ mails, setSelectedMail ,onMoveToTrash}) {
     function moveToTrash(mailId){
         onMoveToTrash(mailId)
     }
-    console.log(mails);
     if(!mails) return
     return (
         <section>
