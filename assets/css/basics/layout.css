@@ -10,7 +10,7 @@
     grid-template-columns:40px 1fr
 }
 .main{
-    grid-template-rows: 1fr minmax(10vh,30vh)
+    grid-template-rows: 5vh 1fr minmax(10vh,30vh)
     
 }
 .mail-preview{

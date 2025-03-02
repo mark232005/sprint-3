@@ -3,6 +3,7 @@ import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { NavBar } from "../cmps/NavBar.jsx"
 import { SentMail } from "../cmps/SentMail.jsx"
+import { SortMails } from "../cmps/SortMail.jsx"
 import { mailService } from "../services/mail.service.js"
 import { MailDetails } from "./MailDetails.jsx"
 
@@ -14,7 +15,9 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [sentMail, setSentMail] = useState(null)
     const [mailFilter, setMailFilter] = useState(mailService.getDefaultMailFilter())
-    const [isMenuOpen, setIsMenuOpen]=useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isSortByDate, setIsSortByDate] = useState(false)
+    const [isSortBySubject, setIsSortBySubject] = useState(false)
     useEffect(() => {
         loadMails()
     }, [mailFilter])
@@ -33,7 +36,7 @@ export function MailIndex() {
         mailService.getById(mailId).then(mail => {
             mail.removedAt = Date.now()
             mailService.save(mail).then(
-                upDateMail => setMails(prevMails =>prevMails.filter(mail=>mail.id!==upDateMail.id))
+                upDateMail => setMails(prevMails => prevMails.filter(mail => mail.id !== upDateMail.id))
             )
         }
         )
@@ -45,9 +48,66 @@ export function MailIndex() {
         )
 
     }
-    function toggleOpenMenu(){
-setIsMenuOpen(isMenuOpen=>!isMenuOpen)
+    function toggleOpenMenu() {
+        setIsMenuOpen(isMenuOpen => !isMenuOpen)
     }
+
+    function toggleSortMailsByDate() {
+        setIsSortByDate(isSortByDate => !isSortByDate)
+        if (!isSortByDate) return loadMails()
+        console.log('sort by date');
+        onSortByDate(mails)
+
+
+    }
+
+
+
+    function toggleSortMailsBySubject() {
+        setIsSortBySubject(isSortBySubject => !isSortBySubject)
+        if (!isSortBySubject) return loadMails()
+        console.log('sort by subject');
+        onSortBySubject(mails)
+    }
+
+
+
+    function onSortBySubject(mails) {
+        if (!mails || mails.length === 0) {
+            console.log("No mails to sort")
+            return
+        }
+        const sortMailsByTitle = (mails) => {
+            return mails.sort((a, b) => {
+                const subjectA = a.subject.toLowerCase()
+                const subjectB = b.subject.toLowerCase()
+                return subjectA.localeCompare(subjectB)
+            })
+
+        }
+        const sortedMails = sortMailsByTitle([...mails])
+        setMails(sortedMails)
+    }
+
+
+
+
+    function onSortByDate(mails) {
+        if (!mails || mails.length === 0) {
+            console.log("No mails to sort")
+            return
+        }
+        const sortMailsByDate = (mails) => {
+            return mails.sort((a, b) => {
+                const dateA = new Date(a.sentAt)
+                const dateB = new Date(b.sentAt)
+                return dateB - dateA
+            })
+        }
+        const sortedMails = sortMailsByDate([...mails])
+        setMails(sortedMails)
+    }
+
 
     if (!mails) return "Loading...."
     return (
@@ -58,7 +118,8 @@ setIsMenuOpen(isMenuOpen=>!isMenuOpen)
             <nav className="sidebar">
                 <NavBar sentMail={setSentMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} isMenuOpen={isMenuOpen} />
             </nav>
-            <main className={isMenuOpen?"main menuOpen grid":"main grid"}>
+            <main className={isMenuOpen ? "main menuOpen grid" : "main grid"}>
+                <SortMails mails={mails} toggleSortMailsBySubject={toggleSortMailsBySubject} toggleSortMailsByDate={toggleSortMailsByDate} />
                 {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash} />}
                 {selectedMail && <MailDetails mailId={selectedMail} />}
                 {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} />}
