@@ -2,7 +2,7 @@ import { ColorInput } from "./dynamic-inputs/ColorInput.jsx";
 
 const { useState } = React
 
-export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote, handelNoteClick }) {
+export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote, handelNoteClick, onTogglePin }) {
     console.log('note:', note)
     const [noteColor, setNoteColor] = useState(note.style.backgroundColor)
     const [showColorPicker, setShowColorPicker] = useState(false);
@@ -87,16 +87,23 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                         e.stopPropagation();
                         setShowColorPicker(!showColorPicker);
                     }}></i>
+                    <i
+                        className={`fa-thumbtack ${note.isPinned ? 'pinned' : ''}`}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            onTogglePin(note.id)
+                        }}
+                    ></i>
 
                     {showColorPicker && (
                         <div onClick={(e) => e.stopPropagation()}>
-                        <ColorInput
-                            value={noteColor}
-                            handleColorChange={(color) => {
-                                handleColorChange(color)
-                                // setShowColorPicker(false)
-                            }}
-                        />
+                            <ColorInput
+                                value={noteColor}
+                                handleColorChange={(color) => {
+                                    handleColorChange(color)
+                                    // setShowColorPicker(false)
+                                }}
+                            />
                         </div>
                     )}
                 </div>

@@ -7,12 +7,14 @@ import { NoteAddNew } from '../cmps/NoteAddNew.jsx';
 const { useState, useEffect } = React;
 
 export function NoteIndex() {
-    const [notes, setNotes] = useState(null)
+    const [notes, setNotes] = useState([])
     const [filterBy, setFilterBy] = useState({ text: '', type: '' })
     const [newNoteText, setNewNoteText] = useState('')
     const [noteType, setNoteType] = useState('')
     const [inputPlaceholder, setInputPlaceholder] = useState('Insert your note')
     const [todos, setTodos] = useState([])
+    const pinnedNotes = notes.filter(note => note.isPinned)
+    const unpinnedNotes = notes.filter(note => !note.isPinned)
 
     useEffect(() => {
         loadNotes();
@@ -77,7 +79,16 @@ export function NoteIndex() {
     function onRemoveNote(noteId) {
         noteService.remove(noteId).then(() => {
             setNotes(prevNotes => prevNotes.filter(note => note.id !== noteId));
-        });
+        })
+    }
+    function onTogglePin(noteId) {
+        setNotes(prevNotes =>
+            sortNotes(
+                prevNotes.map(note =>
+                    note.id === noteId ? { ...note, isPinned: !note.isPinned } : note
+                )
+            )
+        )
     }
 
     function onSetFilter(filterBy) {
@@ -100,8 +111,15 @@ export function NoteIndex() {
             };
 
             noteService.save(duplicatedNote).then(loadNotes);
-        });
+        })
     }
+    function sortNotes(notes) {
+        return notes.sort((a, b) => {
+            if (a.isPinned === b.isPinned) return 0;
+            return a.isPinned ? -1 : 1
+        })
+    }
+
 
     return (
         <section className="google-keep-container">
@@ -121,13 +139,25 @@ export function NoteIndex() {
                         addTodo={addTodo}
                         onCreateNewNote={onCreateNewNote}
                     />
-                    </div>
+                </div>
+                <h3>Pinned Notes</h3>
                 <NoteList
-                    notes={notes}
+                    notes={pinnedNotes}
                     onRemoveNote={onRemoveNote}
                     onUpdateNote={onUpdateNote}
                     onDuplicateNote={onDuplicateNote}
+                    onTogglePin={onTogglePin}
                 />
+                <h3>Pinned Notes</h3>
+                <NoteList
+                    notes={unpinnedNotes}
+                    onRemoveNote={onRemoveNote}
+                    onUpdateNote={onUpdateNote}
+                    onDuplicateNote={onDuplicateNote}
+                    onTogglePin={onTogglePin}
+                />
+
+
             </div>
         </section>
     )
