@@ -1,13 +1,12 @@
 
 
-export function SortMails({toggleSortMailsByDate,toggleSortMailsBySubject}) {
-
+export function SortMails({toggleSortMailsByDate,toggleSortMailsBySubject,isSortByDate,isSortBySubject}) {
 
     return (
-        <section className="sort">
+        <section className="sort flex">
 
-            <button className="sot-by-date" onClick={()=>toggleSortMailsByDate()}>Date</button>
-            <button className="sot-by-title" onClick={()=>toggleSortMailsBySubject()}>A-B</button>
+            <button className="sort-btn" onClick={()=>toggleSortMailsByDate()}><img className="sort-img" src={isSortByDate?"assets/img/sort-down.svg":"assets/img/sort-up.svg"}/>Date</button>
+            <button className="sort-btn" onClick={()=>toggleSortMailsBySubject()}><img className="sort-img" src={isSortBySubject?"assets/img/sort-down.svg":"assets/img/sort-up.svg" }/>Subject</button>
         </section>
     )
 

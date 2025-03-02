@@ -1,0 +1,23 @@
+
+.sort{
+    gap: 7px;
+    align-items: center;
+}
+.sort-btn{
+    margin-top: 7px;
+    margin-left: 5px;
+    padding: 10px;
+    border-radius: 25px;
+    border: solid #ddd;
+    background-color: transparent;
+    cursor:pointer
+    
+}
+.sort-btn:hover{
+    background-color: #ddd;
+
+}
+
+.sort-img{
+    width: 10px;
+}
