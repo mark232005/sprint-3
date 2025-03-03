@@ -72,62 +72,65 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
     return (
         <div className="modal">
             <div className="overlay" onClick={closeModal} >
-                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                    {note.type === 'NoteTxt' && (
-                        <input
-                            name="txt"
-                            value={editedNote.info.txt}
-                            onChange={handleChange} />
-                    )}
-                    {note.type === 'NoteTodos' && (
-                        <div>
-
-                            <input className="title"
-                                type="text"
-                                placeholder="Todo List Title"
-                                value={editedNote.info.title || ''}
-                                onChange={(ev) => handleTitleChange(ev.target.value)}
-
-                            />
-                            {editedNote.info.todos.map((todo, idx) => (
-                                <div className="ToDo-List" key={idx}>
-                                    <input
-                                        type="checkbox"
-                                        checked={!!todo.doneAt}
-                                        onChange={() => onToggleTodo(idx)}
-                                    />
-                                    <input
-                                        type="text"
-                                        value={todo.txt}
-                                        onChange={(ev) => handleTodoChange(idx, ev.target.value)}
-                                    />
-                                    {idx === editedNote.info.todos.length - 1 && (
-                                        <i className="fa-regular fa-plus" onClick={addTodo}></i>
-                                    )}
-                                </div>
-                            ))}
-
-                        </div>
-
-                    )}
-                    {note.type === 'NoteImg' && (
-                        <div>
+                <div className="modal-content-wrapper">
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        {note.type === 'NoteTxt' && (
                             <input
-                                type="text"
-                                name="title"
-                                value={editedNote.info.title}
-                                onChange={handleChange}
-                            />
-                            <input
-                                type="text"
-                                name="url"
-                                value={editedNote.info.url}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    )}
+                                name="txt"
+                                value={editedNote.info.txt}
+                                onChange={handleChange} />
+                        )}
+                        {note.type === 'NoteTodos' && (
+                            <div>
 
-                    <i className="fa-regular fa-floppy-disk" onClick={onSave}>Save</i>
+                                <input className="title"
+                                    type="text"
+                                    placeholder="Todo List Title"
+                                    value={editedNote.info.title || ''}
+                                    onChange={(ev) => handleTitleChange(ev.target.value)}
+
+                                />
+                                {editedNote.info.todos.map((todo, idx) => (
+                                    <div className="ToDo-List" key={idx}>
+                                        <input
+                                            type="checkbox"
+                                            checked={!!todo.doneAt}
+                                            onChange={() => onToggleTodo(idx)}
+                                        />
+                                        <input
+                                            type="text"
+                                            value={todo.txt}
+                                            onChange={(ev) => handleTodoChange(idx, ev.target.value)}
+                                        />
+                                        {idx === editedNote.info.todos.length - 1 && (
+                                            <i className="fa-regular fa-plus" onClick={addTodo}></i>
+                                        )}
+                                    </div>
+                                ))}
+
+                            </div>
+
+                        )}
+                        {note.type === 'NoteImg' && (
+                            <div>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    value={editedNote.info.title}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="url"
+                                    value={editedNote.info.url}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        )}
+                        <div className="modal-buttons">
+                            <i className="fa-regular fa-floppy-disk" onClick={onSave}>Save</i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

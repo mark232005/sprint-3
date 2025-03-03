@@ -1,12 +1,9 @@
 .google-keep-header {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    display: flex;
     padding: 10px;
     position: sticky;
-    /* justify-content: space-between; */
-
-
-
+    justify-content: stretch;
+    align-items: center;
  }
 
  

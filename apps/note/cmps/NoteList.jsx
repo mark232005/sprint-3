@@ -46,3 +46,6 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote, onDuplicateNote, o
         </section>
     )
 }
+
+
+

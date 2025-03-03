@@ -1,7 +1,8 @@
 .add-note-container {
     display: flex;
-    grid-area: add-note-container;
     justify-content: space-around;
+    align-items: start;
+    justify-content: center;
  }
 
  input:focus {
@@ -14,6 +15,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    width: 100%;
  }
 
  .insert-txt-field {

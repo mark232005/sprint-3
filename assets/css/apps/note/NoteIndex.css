@@ -17,17 +17,9 @@
 
  
  .notes-container {
-    /* width: 100%; */
-    display: grid;
-    grid:
-       "add-note-container" auto "notes-list" 1fr;
+    display: flex;
+   flex-direction: column;
  }
-
-
-
-
-
-
 
 
  

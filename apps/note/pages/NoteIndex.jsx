@@ -147,24 +147,28 @@ export function NoteIndex() {
                             onCreateNewNote={onCreateNewNote}
                         />
                     </div>
-                    <h3>Pinned Notes</h3>
-                    <NoteList
-                        notes={pinnedNotes}
-                        onRemoveNote={onRemoveNote}
-                        onUpdateNote={onUpdateNote}
-                        onDuplicateNote={onDuplicateNote}
-                        onTogglePin={onTogglePin}
-                    />
-                    <h3>Other Notes</h3>
-                    <NoteList
-                        notes={unpinnedNotes}
-                        onRemoveNote={onRemoveNote}
-                        onUpdateNote={onUpdateNote}
-                        onDuplicateNote={onDuplicateNote}
-                        onTogglePin={onTogglePin}
-                    />
-
-
+                    <div>
+                        <div>
+                        <h3>Pinned Notes</h3>
+                        <NoteList
+                            notes={pinnedNotes}
+                            onRemoveNote={onRemoveNote}
+                            onUpdateNote={onUpdateNote}
+                            onDuplicateNote={onDuplicateNote}
+                            onTogglePin={onTogglePin}
+                        />
+                        </div>
+                        <div>
+                        <h3>Other Notes</h3>
+                        <NoteList
+                            notes={unpinnedNotes}
+                            onRemoveNote={onRemoveNote}
+                            onUpdateNote={onUpdateNote}
+                            onDuplicateNote={onDuplicateNote}
+                            onTogglePin={onTogglePin}
+                        />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
