@@ -32,7 +32,6 @@ export function MailIndex() {
         setMailFilter(newMailFilter)
     }
     function onMoveToTrash(mailId) {
-        console.log(mailId);
         mailService.getById(mailId).then(mail => {
             mail.removedAt = Date.now()
             mailService.save(mail).then(
@@ -43,9 +42,10 @@ export function MailIndex() {
     }
 
     function onSentMail(mail) {
-        mailService.save(mail).then(
-            newMail => setMails(prevMails => [...prevMails, newMail])
+        mailService.save(mail).then(savedMail=>
+            setMails(prevMails=>prevMails.map(existingMail.id===savedMail.id?savedMail:existingMail))
         )
+
 
     }
     function toggleOpenMenu() {
@@ -107,8 +107,14 @@ export function MailIndex() {
         const sortedMails = sortMailsByDate([...mails])
         setMails(sortedMails)
     }
-
-
+    function onStarred(mail) {
+        mailService.save(mail).then(savedMail => {
+            setMails(prevMails => prevMails.map(existingMail =>
+                existingMail.id === savedMail.id ? savedMail : existingMail
+            ))
+        })
+    }
+    
     if (!mails) return "Loading...."
     return (
         <section className="mail-container grid">
@@ -120,8 +126,8 @@ export function MailIndex() {
             </nav>
             <main className={isMenuOpen ? "main menuOpen grid" : "main grid"}>
                 <SortMails mails={mails} toggleSortMailsBySubject={toggleSortMailsBySubject} toggleSortMailsByDate={toggleSortMailsByDate}
-                isSortByDate={isSortByDate} isSortBySubject={isSortBySubject} />
-                {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash} />}
+                    isSortByDate={isSortByDate} isSortBySubject={isSortBySubject} />
+                {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash} onStarred={onStarred} />}
                 {selectedMail && <MailDetails mailId={selectedMail} />}
                 {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} />}
 

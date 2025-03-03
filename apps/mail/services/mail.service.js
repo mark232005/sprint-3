@@ -53,6 +53,10 @@ function query(filterBy = {}) {
                     mail.removedAt!==null)
 
             }
+            if(filterBy.status==='starred'){
+                mails=mails.filter(mail=>
+                    mail.starred!==false)
+            }
             return mails
         })
 }
@@ -94,7 +98,8 @@ var gMails = [
         sentAt: 1551133930594,
         removedAt: null,
         from: 'Mia@gmail.com',
-        to: 'user@appsus.com'
+        to: 'user@appsus.com',
+        starred:true
     },
     {
         id: 'e102',
@@ -105,7 +110,9 @@ var gMails = [
         sentAt: 1551133930594,
         removedAt: null,
         from: 'user@appsus.com',
-        to: 'dima@gmail.com'
+        to: 'dima@gmail.com',
+        starred:false
+
     },
     {
         id: 'e103',
@@ -116,7 +123,8 @@ var gMails = [
         sentAt: 1551133982023,
         removedAt: null,
         from: 'mark@gmail.com',
-        to: 'user@appsus.com'
+        to: 'user@appsus.com',
+        starred:false
     },
     {
         id: 'e104',
@@ -127,7 +135,9 @@ var gMails = [
         sentAt: 1551133930594,
         removedAt: null,
         from: 'user@appsus.com',
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        starred:false
+
     }
 
 ]

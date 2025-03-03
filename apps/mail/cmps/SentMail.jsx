@@ -10,6 +10,7 @@ export function SentMail({ closeModel, onSentMail }) {
         sentAt: null,
         removedAt: null,
         from: mailService.loggedinUser.email,
+        starred:false,
         to: ''
 
     }
@@ -24,10 +25,12 @@ export function SentMail({ closeModel, onSentMail }) {
         const updatedMail = { ...mail, sentAt: Date.now() }
         console.log('saved')
         onSentMail(updatedMail)
+        closeModel(false)
     }
     function pushToDraft() {
         onSentMail(mail)
         console.log('push To Draft');
+
     }
     function handleChange({ target }) {
         setMail({ ...mail, [target.name]: target.value })

@@ -1,6 +1,6 @@
 import { MailPreview } from "./MailPreview.jsx";
 
-export function MailList({ mails, setSelectedMail ,onMoveToTrash}) {
+export function MailList({ mails, setSelectedMail ,onMoveToTrash,onStarred}) {
     function moveToTrash(mailId){
         onMoveToTrash(mailId)
     }
@@ -12,8 +12,7 @@ export function MailList({ mails, setSelectedMail ,onMoveToTrash}) {
                     mails.map(
                         mail =>
                             <li className="mail-Preview" key={mail.id}>
-                                <MailPreview mail={mail} setSelectedMail={setSelectedMail} moveToTrash={moveToTrash} />
-                                {/* <button className="on-remove-btn" onClick={()=>moveToTrash(mail.id)}>Remove</button> */}
+                                <MailPreview mail={mail} setSelectedMail={setSelectedMail} moveToTrash={moveToTrash} onStarred={onStarred} />
                             </li>
                     )
                 }
