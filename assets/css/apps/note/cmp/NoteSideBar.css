@@ -1,0 +1,41 @@
+.notes-filter-by-type {
+    display: flex;
+    /* gap: 30px;  */
+    box-sizing: border-box;
+    flex-direction: column;
+    margin-top: 25px;
+    padding: 0 10px;
+    width: 200px;
+ }
+
+ .notes-filter-by-type i {
+    height: 40px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #202124;
+    display: flex;
+    align-items: center;
+
+    font-weight: 500;
+ }
+
+ .notes-filter-by-type i:hover {
+    cursor: pointer;
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #564d4d56;
+
+ }
+
+ .notes-filter-by-type i span {
+    font-family: 'Roboto', sans-serif;
+    margin-left: 8px;
+ }
+
+ .notes-filter-by-type h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+ }

@@ -125,6 +125,8 @@ export function NoteIndex() {
     return (
         <section className="google-keep-container">
             <div className="google-keep-header">
+            <i class="fa-solid fa-bars"></i>
+            
             <NoteMainFilterHeader filterBy={filterBy} onSetFilter={onSetFilter} />
             </div>
             <div className='google-keep-content'>

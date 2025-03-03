@@ -1,0 +1,64 @@
+.note-preview {
+    max-width: 238px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    border: 1px solid #564d4d56;
+
+ }
+
+
+ .note-preview p {
+    text-align: justify;
+    text-justify: inter-word;
+    white-space: nowrap;
+    width: 100%;
+    margin-left: 15px;
+ }
+
+ .note-preview h2 {
+    text-align: justify;
+    width: 100%;
+    margin-left: 15px;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+ }
+
+
+ .note-preview img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+ }
+
+ .note-preview .todo-item {
+    display: flex;
+    align-items: anchor-center;
+    width: 239px;
+    margin-left: 5px;
+ }
+
+ .todo-item .done {
+    text-decoration: line-through;
+
+ }
+
+
+ .note-preview-functions {
+    display: none;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+
+
+ }
+
+ .note-item:hover .note-preview-functions {
+    display: flex;
+ }

@@ -17,14 +17,19 @@ export function NoteMainFilterHeader({ onSetFilter, filterBy }) {
     }
 
     return (
+
         <section className="note-main-filter-header">
-            <input
-                type="text"
-                name="txt" 
-                value={txt || ''}
-                onChange={handleChange}
-                placeholder="Search your note"
-            />
+            <React.Fragment>
+                <input
+                    type="text"
+                    name="txt"
+                    value={txt || ''}
+                    onChange={handleChange}
+                    placeholder="Search your note"
+                />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </React.Fragment>
+
         </section>
     )
 }

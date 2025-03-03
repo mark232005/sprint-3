@@ -9,7 +9,11 @@
 @import './cmps/AppHeader.css';
 
 @import './apps/note/NoteIndex.css';
-@import './apps/note/NoteList.css';
+@import './apps/note/cmp/MainHeader.css';
+@import './apps/note/cmp/NoteSideBar.css';
+@import './apps/note/cmp/CreateNewNotes.css';
+@import './apps/note/cmp/NotesMainContent.css';
+@import './apps/note/cmp/NotePreview.css';
 @import './apps/note/cmp/EditModal.css';
 @import './apps/note/cmp/ColorPicker.css';
 

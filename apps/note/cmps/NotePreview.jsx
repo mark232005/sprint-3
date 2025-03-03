@@ -94,6 +94,9 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                             onTogglePin(note.id)
                         }}
                     ></i>
+                    <span class="material-symbols-outlined">
+                        keep
+                    </span>
 
                     {showColorPicker && (
                         <div onClick={(e) => e.stopPropagation()}>

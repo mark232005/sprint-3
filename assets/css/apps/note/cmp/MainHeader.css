@@ -1,0 +1,39 @@
+.google-keep-header {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 10px;
+    position: sticky;
+    /* justify-content: space-between; */
+
+
+
+ }
+
+ 
+
+.note-main-filter-header {
+    height: 30px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #564d4d56;
+    padding: 3px;
+    box-sizing: border-box;
+ 
+ }
+ 
+ 
+ .note-main-filter-header input {
+    border: none;
+    height: 100%;
+    direction: none;
+    width: 100%;
+    background: transparent;
+ 
+ }
+ 
+ .fa-magnifying-glass{
+    padding: 8px;
+ }
+ 
