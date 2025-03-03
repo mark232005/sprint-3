@@ -1,7 +1,7 @@
 import { noteService } from '../services/note.service.js'
 const { useState, useEffect, useRef } = React
 
-export function NoteMainFilterHeader({ onSetFilter, filterBy }) {
+export function NoteMainFilterHeader({ onSetFilter, filterBy , onToggleMenu }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy || { txt: '' })
 
     const { txt } = filterByToEdit

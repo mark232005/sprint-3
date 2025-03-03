@@ -9,19 +9,19 @@
 
 
  .google-keep-content {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 1px;
-    height: 100vh;
- }
+   display: grid;
+   grid-template-columns: auto 1fr; 
+   transition: grid-template-rows 0.3s ease;
+   height: 100vh;
+}
+
+.google-keep-content.menu-open {
+   grid-template-rows: 200px 1fr; 
+}
+
 
  
- .notes-container {
-    display: flex;
-   flex-direction: column;
- }
-
-
+ 
  
 
 

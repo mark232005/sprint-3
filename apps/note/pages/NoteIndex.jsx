@@ -14,8 +14,10 @@ export function NoteIndex() {
     const [noteType, setNoteType] = useState('')
     const [inputPlaceholder, setInputPlaceholder] = useState('Insert your note')
     const [todos, setTodos] = useState([])
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const pinnedNotes = notes.filter(note => note.isPinned)
     const unpinnedNotes = notes.filter(note => !note.isPinned)
+
 
     useEffect(() => {
         loadNotes();
@@ -28,11 +30,11 @@ export function NoteIndex() {
     if (!notes) return <section className="container">Loading...</section>;
 
     function handleInputChange({ target }) {
-        setNewNoteText(target.value);
+        setNewNoteText(target.value)
     }
 
     function handleNoteTypeChange(type) {
-        setNoteType(type);
+        setNoteType(type)
         setInputPlaceholder(type === 'NoteImg' ? 'Insert image URL' : 'Insert your note');
     }
 
@@ -121,16 +123,20 @@ export function NoteIndex() {
         })
     }
 
+    function onToggleMenu() {
+        console.log('toggle menu', isMenuOpen)
+        setIsMenuOpen(isMenuOpen => !isMenuOpen)
+    }
 
     return (
         <section className="google-keep-container">
             <div className="google-keep-header">
-            <i className="fa-solid fa-bars"></i>
-            
-            <NoteMainFilterHeader filterBy={filterBy} onSetFilter={onSetFilter} />
+                <i className="fa-solid fa-bars" onClick={()=> onToggleMenu()}></i>
+
+                <NoteMainFilterHeader filterBy={filterBy} onSetFilter={onSetFilter} onToggleMenu={onToggleMenu} />
             </div>
             <div className='google-keep-content'>
-                <NodeFilter filter={filterBy} onSetFilter={onSetFilter} />
+                <NodeFilter filter={filterBy} onSetFilter={onSetFilter} isMenuOpen={isMenuOpen} />
 
                 <div className="notes-container">
                     <div className="add-note-container">
@@ -149,24 +155,24 @@ export function NoteIndex() {
                     </div>
                     <div>
                         <div>
-                        <h3>Pinned Notes</h3>
-                        <NoteList
-                            notes={pinnedNotes}
-                            onRemoveNote={onRemoveNote}
-                            onUpdateNote={onUpdateNote}
-                            onDuplicateNote={onDuplicateNote}
-                            onTogglePin={onTogglePin}
-                        />
+                            <h3>Pinned Notes</h3>
+                            <NoteList
+                                notes={pinnedNotes}
+                                onRemoveNote={onRemoveNote}
+                                onUpdateNote={onUpdateNote}
+                                onDuplicateNote={onDuplicateNote}
+                                onTogglePin={onTogglePin}
+                            />
                         </div>
                         <div>
-                        <h3>Other Notes</h3>
-                        <NoteList
-                            notes={unpinnedNotes}
-                            onRemoveNote={onRemoveNote}
-                            onUpdateNote={onUpdateNote}
-                            onDuplicateNote={onDuplicateNote}
-                            onTogglePin={onTogglePin}
-                        />
+                            <h3>Other Notes</h3>
+                            <NoteList
+                                notes={unpinnedNotes}
+                                onRemoveNote={onRemoveNote}
+                                onUpdateNote={onUpdateNote}
+                                onDuplicateNote={onDuplicateNote}
+                                onTogglePin={onTogglePin}
+                            />
                         </div>
                     </div>
                 </div>
