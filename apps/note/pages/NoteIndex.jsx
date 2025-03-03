@@ -2,6 +2,7 @@ import { noteService } from '../services/note.service.js';
 import { NoteList } from '../cmps/NoteList.jsx';
 import { NodeFilter } from '../cmps/NodeFilter.jsx';
 import { NoteAddNew } from '../cmps/NoteAddNew.jsx';
+import { NoteMainFilterHeader } from '../cmps/NoteMainFilterHeader.jsx';
 
 
 const { useState, useEffect } = React;
@@ -91,8 +92,8 @@ export function NoteIndex() {
         )
     }
 
-    function onSetFilter(filterBy) {
-        setFilterBy({ ...filterBy });
+    function onSetFilter(newFilter) {
+        setFilterBy(prevFilter => ({ ...prevFilter, ...newFilter }))
     }
 
     function onUpdateNote(updatedNote) {
@@ -123,41 +124,46 @@ export function NoteIndex() {
 
     return (
         <section className="google-keep-container">
-            <NodeFilter filter={filterBy} onSetFilter={onSetFilter} />
+            <div className="google-keep-header">
+            <NoteMainFilterHeader filterBy={filterBy} onSetFilter={onSetFilter} />
+            </div>
+            <div className='google-keep-content'>
+                <NodeFilter filter={filterBy} onSetFilter={onSetFilter} />
 
-            <div className="notes-container">
-                <div className="add-note-container">
-                    <NoteAddNew
-                        noteType={noteType}
-                        inputPlaceholder={inputPlaceholder}
-                        newNoteText={newNoteText}
-                        handleInputChange={handleInputChange}
-                        handleNoteTypeChange={handleNoteTypeChange}
-                        handleTodoTypeChange={handleTodoTypeChange}
-                        todos={todos}
-                        handleTodoChange={handleTodoChange}
-                        addTodo={addTodo}
-                        onCreateNewNote={onCreateNewNote}
+                <div className="notes-container">
+                    <div className="add-note-container">
+                        <NoteAddNew
+                            noteType={noteType}
+                            inputPlaceholder={inputPlaceholder}
+                            newNoteText={newNoteText}
+                            handleInputChange={handleInputChange}
+                            handleNoteTypeChange={handleNoteTypeChange}
+                            handleTodoTypeChange={handleTodoTypeChange}
+                            todos={todos}
+                            handleTodoChange={handleTodoChange}
+                            addTodo={addTodo}
+                            onCreateNewNote={onCreateNewNote}
+                        />
+                    </div>
+                    <h3>Pinned Notes</h3>
+                    <NoteList
+                        notes={pinnedNotes}
+                        onRemoveNote={onRemoveNote}
+                        onUpdateNote={onUpdateNote}
+                        onDuplicateNote={onDuplicateNote}
+                        onTogglePin={onTogglePin}
                     />
+                    <h3>Other Notes</h3>
+                    <NoteList
+                        notes={unpinnedNotes}
+                        onRemoveNote={onRemoveNote}
+                        onUpdateNote={onUpdateNote}
+                        onDuplicateNote={onDuplicateNote}
+                        onTogglePin={onTogglePin}
+                    />
+
+
                 </div>
-                <h3>Pinned Notes</h3>
-                <NoteList
-                    notes={pinnedNotes}
-                    onRemoveNote={onRemoveNote}
-                    onUpdateNote={onUpdateNote}
-                    onDuplicateNote={onDuplicateNote}
-                    onTogglePin={onTogglePin}
-                />
-                <h3>Other Notes</h3>
-                <NoteList
-                    notes={unpinnedNotes}
-                    onRemoveNote={onRemoveNote}
-                    onUpdateNote={onUpdateNote}
-                    onDuplicateNote={onDuplicateNote}
-                    onTogglePin={onTogglePin}
-                />
-
-
             </div>
         </section>
     )

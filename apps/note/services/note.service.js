@@ -20,10 +20,23 @@ function query(filterBy = {}) {
                 notes = _initializeNotes()
                 utilService.saveToStorage(NOTE_KEY, notes)
             }
-            if (filterBy.text) {
-                const regExp = new RegExp(filterBy.text, 'i')
-                notes = notes.filter(note => regExp.test(note.info.txt || ''))
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => {
+                    switch (note.type) {
+                        case 'NoteTxt':
+                            return regExp.test(note.info.txt || '')
+                        case 'NoteImg':
+                            return regExp.test(note.info.title || '')
+                        case 'NoteTodos':
+                            return regExp.test(note.info.title || '') ||
+                                Array.isArray(note.info.todos) && note.info.todos.some(todo => regExp.test(todo.txt || ''))
+                        default:
+                            return false
+                    }
+                })
             }
+
             if (filterBy.type) {
                 notes = notes.filter(note => note.type === filterBy.type)
             }
@@ -109,9 +122,9 @@ function _initializeNotes() {
 
 function getNoteColor(type) {
     const colors = {
-        'NoteTxt': '#FFDDC1', 
-        'NoteImg': '#FFCBCB', 
-        'NoteVideo': '#B5EAD7', 
+        'NoteTxt': '#FFDDC1',
+        'NoteImg': '#FFCBCB',
+        'NoteVideo': '#B5EAD7',
         'NoteTodos': '#E2F0CB', // Blue
         'NoteAudio': '#9C27B0', // Purple
         'NoteCanvas': '#FF9800', // Orange

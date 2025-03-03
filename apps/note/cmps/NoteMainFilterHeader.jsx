@@ -1,11 +1,30 @@
 import { noteService } from '../services/note.service.js'
-
 const { useState, useEffect, useRef } = React
 
+export function NoteMainFilterHeader({ onSetFilter, filterBy }) {
+    const [filterByToEdit, setFilterByToEdit] = useState(filterBy || { txt: '' })
 
-export function noteMainFilter () {
+    const { txt } = filterByToEdit
+
+    useEffect(() => {
+        onSetFilter(filterByToEdit)
+    }, [filterByToEdit])
+
+    function handleChange({ target }) {
+        const field = target.name
+        const value = target.value
+        setFilterByToEdit({ ...filterByToEdit, [field]: value })
+    }
+
     return (
-        <div className="note-main-filter">Hello</div>
+        <section className="note-main-filter-header">
+            <input
+                type="text"
+                name="txt" 
+                value={txt || ''}
+                onChange={handleChange}
+                placeholder="Search your note"
+            />
+        </section>
     )
-
 }
