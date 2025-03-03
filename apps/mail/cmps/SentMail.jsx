@@ -2,22 +2,11 @@ import { mailService } from "../services/mail.service.js"
 
 
 const { useState } = React
-export function SentMail({ closeModel, onSentMail }) {
-    const sentMail = {
-        createdAt: Date.now(),
-        subject: '',
-        body: '',
-        sentAt: null,
-        removedAt: null,
-        from: mailService.loggedinUser.email,
-        starred:false,
-        to: ''
-
-    }
-
-    const [mail, setMail] = useState(sentMail)
-
-
+export function SentMail({ closeModel, onSentMail,selectedMail }) {
+    const [mail, setMail] = useState(()=>{
+if(selectedMail)return selectedMail
+else return mailService.createMail()
+    })
 
 
     function sentMailTo(ev) {
@@ -49,15 +38,15 @@ export function SentMail({ closeModel, onSentMail }) {
             <form onSubmit={(event) => sentMailTo(event)}>
                 <div className="input-to">
                     <label htmlFor="to">To:</label>
-                    <input className="input" type="email" name="to" onChange={handleChange} id="to" />
+                    <input className="input" type="email" name="to" onChange={handleChange} id="to"  value={mail.to||""}/>
                 </div>
                 <div className="input-subject">
                     <label htmlFor="subject"></label>
-                    <input className="input" type="text" name="subject" placeholder="Subject" onChange={handleChange} id="subject" />
+                    <input className="input" type="text" name="subject" placeholder="Subject" onChange={handleChange} id="subject" value={mail.subject||""}/>
                 </div>
                 <div className="input-body">
                     <label htmlFor="body"></label>
-                    <input className="input" type="text" name="body" onChange={handleChange} id="body" />
+                    <input className="input" type="text" name="body" onChange={handleChange} id="body" value={mail.body||""}/>
                 </div>
                 <button className="send-btn">Send</button>
             </form>

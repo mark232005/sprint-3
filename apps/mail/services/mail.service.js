@@ -14,7 +14,8 @@ export const mailService = {
     save,
     remove,
     getDefaultMailFilter,
-    loggedinUser
+    loggedinUser,
+    createMail
 }
 
 const KEY = 'mailsDB'
@@ -141,4 +142,19 @@ var gMails = [
     }
 
 ]
+
+function createMail(subject,body,to){
+    return {
+        createdAt:Date.now(),
+        subject: subject||"",
+        body: body||"",
+        sentAt: null,
+        removedAt: null,
+        from: loggedinUser.email,
+        starred:false,
+        to: to||""
+
+    }
+
+}
 
