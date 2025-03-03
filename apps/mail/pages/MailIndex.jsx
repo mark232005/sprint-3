@@ -41,13 +41,16 @@ export function MailIndex() {
         )
     }
 
+
     function onSentMail(mail) {
-        mailService.save(mail).then(savedMail=>
-            setMails(prevMails=>prevMails.map(existingMail.id===savedMail.id?savedMail:existingMail))
-        )
-
-
+        mailService.save(mail).then(savedMail => {
+            setMails(prevMails => prevMails.map(prevMail =>
+                prevMail.id === savedMail.id ? savedMail : prevMail
+            ))
+        })
     }
+    
+
     function toggleOpenMenu() {
         setIsMenuOpen(isMenuOpen => !isMenuOpen)
     }

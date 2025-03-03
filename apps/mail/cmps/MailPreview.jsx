@@ -7,6 +7,7 @@ export function MailPreview({ mail, setSelectedMail, moveToTrash,onStarred }) {
 
     const { from, subject, body, to, sentAt, isRead } = mail
     const handleClick = () => {
+        if(mailService.getDefaultMailFilter.status==='draft') return "mail drsft"
         setSelectedMail(mail.id)
     }
     const formattedSentAt = new Date(sentAt)
