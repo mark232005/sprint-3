@@ -1,5 +1,4 @@
 import { Header } from "../cmps/Header.jsx"
-import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { NavBar } from "../cmps/NavBar.jsx"
 import { SentMail } from "../cmps/SentMail.jsx"
@@ -49,7 +48,7 @@ export function MailIndex() {
             ))
         })
     }
-    
+
 
     function toggleOpenMenu() {
         setIsMenuOpen(isMenuOpen => !isMenuOpen)
@@ -117,7 +116,18 @@ export function MailIndex() {
             ))
         })
     }
-    
+    function onDraftMail(mailId) {
+        console.log(mailId);
+        mailService.getById(mailId).then(mail => {
+            const { to, subject, body } = mail
+            const newMail = mailService.createMail(subject, body, to)
+            setSelectedMail(newMail)
+            setSentMail(true)
+        }
+        )
+    }
+
+
     if (!mails) return "Loading...."
     return (
         <section className="mail-container grid">
@@ -130,9 +140,12 @@ export function MailIndex() {
             <main className={isMenuOpen ? "main menuOpen grid" : "main grid"}>
                 <SortMails mails={mails} toggleSortMailsBySubject={toggleSortMailsBySubject} toggleSortMailsByDate={toggleSortMailsByDate}
                     isSortByDate={isSortByDate} isSortBySubject={isSortBySubject} />
-                {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash} onStarred={onStarred} />}
+
+                {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash}
+                    onStarred={onStarred} mailFilter={mailFilter} onDraftMail={onDraftMail} />}
+
                 {selectedMail && <MailDetails mailId={selectedMail} />}
-                {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} />}
+                {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} selectedMail={selectedMail} />}
 
 
             </main>

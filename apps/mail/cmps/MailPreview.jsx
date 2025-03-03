@@ -2,12 +2,13 @@ import { LongTxt } from "./LongTxt.jsx"
 
 import { mailService } from "../services/mail.service.js"
 const{useState}=React
-export function MailPreview({ mail, setSelectedMail, moveToTrash,onStarred }) {
+export function MailPreview({ mail, setSelectedMail, moveToTrash,onStarred,mailFilter,onDraftMail}) {
     const [isStar,setIsStar ] = useState(false)
 
     const { from, subject, body, to, sentAt, isRead } = mail
     const handleClick = () => {
-        if(mailService.getDefaultMailFilter.status==='draft') return "mail drsft"
+        console.log(mailFilter);
+        if(mailFilter.status==="draft") onDraftMail(mail.id)
         setSelectedMail(mail.id)
     }
     const formattedSentAt = new Date(sentAt)
