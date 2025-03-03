@@ -21,3 +21,8 @@
 .a-mail-preview{
     grid-template-columns: 168px 618px;
 }
+.container-about{
+    grid-template-columns: minmax(15vh,30vh) 1fr;
+    grid-template-rows: 1fr 1fr;
+
+}
