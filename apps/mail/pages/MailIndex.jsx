@@ -138,8 +138,10 @@ export function MailIndex() {
                 <NavBar sentMail={setSentMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} isMenuOpen={isMenuOpen} />
             </nav>
             <main className={isMenuOpen ? "main menuOpen grid" : "main grid"}>
-                <SortMails mails={mails} toggleSortMailsBySubject={toggleSortMailsBySubject} toggleSortMailsByDate={toggleSortMailsByDate}
-                    isSortByDate={isSortByDate} isSortBySubject={isSortBySubject} />
+                {
+                    !selectedMail && <SortMails mails={mails} toggleSortMailsBySubject={toggleSortMailsBySubject} toggleSortMailsByDate={toggleSortMailsByDate}
+                        isSortByDate={isSortByDate} isSortBySubject={isSortBySubject} />
+                }
 
                 {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash}
                     onStarred={onStarred} mailFilter={mailFilter} onDraftMail={onDraftMail} />}

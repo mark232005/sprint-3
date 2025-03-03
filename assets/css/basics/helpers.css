@@ -31,3 +31,7 @@
 .base-line{
     align-items: baseline;
 }
+
+.none{
+    display: none;
+}
