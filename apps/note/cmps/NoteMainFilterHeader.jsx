@@ -27,7 +27,7 @@ export function NoteMainFilterHeader({ onSetFilter, filterBy }) {
                     onChange={handleChange}
                     placeholder="Search your note"
                 />
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
             </React.Fragment>
 
         </section>

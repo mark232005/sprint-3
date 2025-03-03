@@ -1,4 +1,6 @@
 import { ColorInput } from "./dynamic-inputs/ColorInput.jsx";
+import { Link } from 'react-router-dom'
+
 
 const { useState } = React
 
@@ -69,7 +71,6 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
         <section style={{ backgroundColor: note.style.backgroundColor }}
             className="note-preview"
         >
-
             <div className="note-preview" onClick={() => handelNoteClick(note)}>
                 <div className="note-preview-content">
                     {renderNoteType(note)}
@@ -94,7 +95,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                             onTogglePin(note.id)
                         }}
                     ></i>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         keep
                     </span>
 
