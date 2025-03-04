@@ -30,6 +30,7 @@ body.active-modal {
     background: white;
     border-radius: 8px;
     overflow: hidden;
+    /* flex-direction: column; */
     
 }
 
@@ -44,18 +45,23 @@ body.active-modal {
 
 .ToDo-List{
     display: flex;
-    align-items: anchor-center;
+    justify-content: space-between;
+    align-items: center;
     width: 239px;
     margin-left: 5px;
     align-self: start;
 }
+.toDo-list-edit{
+    display: flex;
+    align-items: anchor-center;
 
+}
 .modal-content input {
     display: flex;
     padding: 10px;
     box-sizing: border-box;
     border: none;
-    width: 300px;
+    /* width: 300px; */
 }
 
 .modal-content .title{
@@ -94,4 +100,11 @@ body.active-modal {
     justify-content: space-between;
     padding: 10px;
     cursor: pointer;
+    align-self: flex-end;
+    align-items: end;
+}
+
+.todoOnEditMode{
+    display: flex;
+    
 }

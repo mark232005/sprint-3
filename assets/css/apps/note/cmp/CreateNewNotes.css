@@ -81,7 +81,7 @@
  }
 
 
- .todos-container {
+ .todos-container.header {
     width: 350px;
     display: flex;
     align-items: center;
@@ -94,31 +94,34 @@
  }
 
 
- .todos-container input {
+
+ .todos-container.header input {
     border: none;
     height: 100%;
     direction: none;
     background: transparent;
  }
 
- .todo-item {
+ .todo-item.header{
     display: flex;
     align-items: anchor-center;
     width: 340px;
     padding: 5px;
+    justify-content: space-between;
  }
 
- .last-todo {
+ .last-todo.header{
     border-style: solid none;
     border-width: 2px;
     border-color: #564d4d56;
+    align-self: end;
  }
 
 
- .todo-item i {
-    margin-left: auto;
-    cursor: pointer;
- }
+.plus-sign{
+    display: flex;
+    align-self: self-end;
+}
 
 
  .save-button {

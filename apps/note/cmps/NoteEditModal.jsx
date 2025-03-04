@@ -92,6 +92,7 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                                 />
                                 {editedNote.info.todos.map((todo, idx) => (
                                     <div className="ToDo-List" key={idx}>
+                                        <div className="toDo-list-edit">
                                         <input
                                             type="checkbox"
                                             checked={!!todo.doneAt}
@@ -102,8 +103,11 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                                             value={todo.txt}
                                             onChange={(ev) => handleTodoChange(idx, ev.target.value)}
                                         />
+                                        </div>
                                         {idx === editedNote.info.todos.length - 1 && (
-                                            <i className="fa-regular fa-plus" onClick={addTodo}></i>
+                                            <div className="edit-modal-last-toDo">
+                                                <i className="fa-regular fa-plus" onClick={addTodo}></i>
+                                                </div>
                                         )}
                                     </div>
                                 ))}

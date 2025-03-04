@@ -1,3 +1,4 @@
+import { noteService } from "../services/note.service.js";
 import { ColorInput } from "./dynamic-inputs/ColorInput.jsx";
 import { Link } from 'react-router-dom'
 
@@ -5,7 +6,7 @@ import { Link } from 'react-router-dom'
 const { useState } = React
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote, handelNoteClick, onTogglePin }) {
-    console.log('note:', note)
+    // console.log('note:', note)
     const [noteColor, setNoteColor] = useState(note.style.backgroundColor)
     const [showColorPicker, setShowColorPicker] = useState(false);
 
@@ -19,23 +20,22 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
 
 
 
+   
+
     function toggleTodoStatus(note, noteId, todoIdx) {
-        const updatedNotes = notes.map(note => {
-            if (note.id !== noteId) return note
-
-            const updatedTodos = note.info.todos.map((todo, idx) => {
-                if (idx === todoIdx) {
-                    return { ...todo, doneAt: todo.doneAt ? null : Date.now() }
-                }
-                return todo
-            })
-
-            return { ...note, info: { ...note.info, todos: updatedTodos } }
+        const updatedTodos = note.info.todos.map((todo, idx) => {
+            if (idx === todoIdx) {
+                return { ...todo, doneAt: todo.doneAt ? null : Date.now() }
+            }
+            return todo
         })
+    
+        const updatedNote = { ...note, info: { ...note.info, todos: updatedTodos } }
+    
+        onUpdateNote(updatedNote) 
 
-        setNotes(updatedNotes);
-        noteService.save(updatedNotes.find(note => note.id === noteId))
     }
+    
 
 
     function renderNoteType(note) {
