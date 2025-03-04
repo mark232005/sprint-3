@@ -48,7 +48,6 @@ body.active-modal {
     width: 239px;
     margin-left: 5px;
     align-self: start;
-    padding: 10px;
 }
 
 .modal-content input {
@@ -56,6 +55,7 @@ body.active-modal {
     padding: 10px;
     box-sizing: border-box;
     border: none;
+    width: 300px;
 }
 
 .modal-content .title{
