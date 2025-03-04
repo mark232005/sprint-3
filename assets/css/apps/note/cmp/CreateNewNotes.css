@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     border-radius: 8px;
-    border: 2px solid #564d4d56;
+    border: 1px solid #564d4d56;
     padding: 3px;
     box-sizing: border-box;
  }

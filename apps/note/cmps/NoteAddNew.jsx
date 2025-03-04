@@ -51,7 +51,7 @@ export function NoteAddNew({
 
                 {noteType && (
                     <div className="bottom-panel">
-                        <i className="fa-regular fa-floppy-disk save-button" onClick={onCreateNewNote}>Save</i>
+                        <i className="fa-regular fa-floppy-disk save-button" onClick={onCreateNewNote}>Close</i>
                     </div>
                 )}
             </div>

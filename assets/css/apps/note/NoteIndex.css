@@ -13,7 +13,7 @@
    grid-template-columns: auto 1fr; 
    transition: grid-template-rows 0.3s ease;
    height: 100vh;
-}
+   border-top: 1px solid #ccc;}
 
 .google-keep-content.menu-open {
    grid-template-rows: 200px 1fr; 

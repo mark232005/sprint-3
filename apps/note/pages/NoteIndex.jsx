@@ -131,7 +131,10 @@ export function NoteIndex() {
     return (
         <section className="google-keep-container">
             <div className="google-keep-header">
-                <i className="fa-solid fa-bars" onClick={()=> onToggleMenu()}></i>
+                <div className="menu-icon">
+                    <i className="fa-solid fa-bars" onClick={() => onToggleMenu()}></i>
+                    <span>Aluf Keep</span>
+                </div>
 
                 <NoteMainFilterHeader filterBy={filterBy} onSetFilter={onSetFilter} onToggleMenu={onToggleMenu} />
             </div>
