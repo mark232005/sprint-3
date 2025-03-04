@@ -41,22 +41,22 @@ export function NoteAddNew({
                                     value={todo.txt}
                                     onChange={(e) => handleTodoChange(idx, e.target.value)}
                                 />
-                                </div>
-                                {idx === todos.length - 1 && (
-                                    <div className="plus-sign">
-                                        <i className="fa-regular fa-plus create" onClick={addTodo}></i>
-                                    </div>
-                                )}
                             </div>
-                        ))}
+                            {idx === todos.length - 1 && (
+                                <div className="plus-sign">
+                                    <i className="fa-regular fa-plus create" onClick={addTodo}></i>
+                                </div>
+                            )}
                         </div>
-                    )}
-
-                    {noteType && (
-                        <div className="bottom-panel">
-                            <i className="fa-regular fa-floppy-disk save-button" onClick={onCreateNewNote}>Close</i>
-                        </div>
-                    )}
+                    ))}
                 </div>
-            )
-            }
+            )}
+
+            {noteType && (
+                <div className="bottom-panel">
+                    <i className="fa-regular fa-floppy-disk save-button" onClick={onCreateNewNote}>Close</i>
+                </div>
+            )}
+        </div>
+    )
+}

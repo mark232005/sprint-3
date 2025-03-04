@@ -78,7 +78,10 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                             <input
                                 name="txt"
                                 value={editedNote.info.txt}
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                style={{ width: '300px' }}
+                                />
+                                
                         )}
                         {note.type === 'NoteTodos' && (
                             <div>
@@ -122,12 +125,16 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                                     name="title"
                                     value={editedNote.info.title}
                                     onChange={handleChange}
+                                    style={{ width: '300px' }}
+
                                 />
                                 <input
                                     type="text"
                                     name="url"
                                     value={editedNote.info.url}
                                     onChange={handleChange}
+                                    style={{ width: '300px' }}
+
                                 />
                             </div>
                         )}

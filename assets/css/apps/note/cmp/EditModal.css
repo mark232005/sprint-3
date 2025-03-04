@@ -61,7 +61,6 @@ body.active-modal {
     padding: 10px;
     box-sizing: border-box;
     border: none;
-    /* width: 300px; */
 }
 
 .modal-content .title{
