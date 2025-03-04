@@ -3,10 +3,11 @@ import { mailService } from "../services/mail.service.js"
 const { useState, useEffect } = React
 
 
-export function MailDetails({ mailId,setMailFilter, setSelectedMail ,setSentMail,onMoveToTrash}) {
+export function MailDetails({ mailId,setMailFilter, setSelectedMail ,setSentMail,onMoveToTrash,onReadMail}) {
     const [currMail, setCurrMail] = useState(null)
     useEffect(() => {
         loadMail()
+        onReadMail(mailId)
     }, [mailId])
 
     function loadMail() {
