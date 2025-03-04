@@ -20,7 +20,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
 
 
 
-   
+
 
     function toggleTodoStatus(note, noteId, todoIdx) {
         const updatedTodos = note.info.todos.map((todo, idx) => {
@@ -29,13 +29,13 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
             }
             return todo
         })
-    
+
         const updatedNote = { ...note, info: { ...note.info, todos: updatedTodos } }
-    
-        onUpdateNote(updatedNote) 
+
+        onUpdateNote(updatedNote)
 
     }
-    
+
 
 
     function renderNoteType(note) {
@@ -64,6 +64,28 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
         }
     }
 
+    function sendToEmail(note) {
+        const subject = encodeURIComponent(note.info.title || 'Note Text from Keep')
+        const body = encodeURIComponent(getNoteBody(note))
+    
+        const url = `#/mail?subject=${subject}&body=${body}`
+        window.location.href = url
+    }
+    
+    function getNoteBody(note) {
+        switch (note.type) {
+            case 'NoteTxt':
+                return note.info.txt || ''
+            case 'NoteImg':
+                return `Check out this image: ${note.info.url || ''}`
+            case 'NoteTodos':
+                return note.info.todos.map(todo => `- ${todo.txt}`).join('\n') || ''
+            default:
+                return 'Check out this note!'
+        }
+    }
+    
+
 
 
 
@@ -80,6 +102,10 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                         e.stopPropagation();
                         onRemoveNote(note.id);
                     }}></i>
+                    <i className="fa-solid fa-envelope" onClick={(e) => {
+                        e.stopPropagation()
+                        sendToEmail(note)
+                    }}></i>
                     <i className="fa-regular fa-clone" onClick={(e) => {
                         e.stopPropagation();
                         onDuplicateNote(note.id);
@@ -94,8 +120,8 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                             onTogglePin(note.id)
                         }}
                     ></i>
-                    </div>
-                    <div>
+                </div>
+                <div>
                     {showColorPicker && (
                         <div onClick={(e) => e.stopPropagation()}>
                             <ColorInput

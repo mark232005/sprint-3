@@ -1,30 +1,41 @@
 import { mailService } from "../services/mail.service.js"
 
+const { useState, useEffect } = React
+const { useSearchParams } = ReactRouterDOM
 
-const { useState } = React
-export function SentMail({ closeModel, onSentMail,selectedMail,setSentMail}) {
-    const [mail, setMail] = useState(()=>{
-if(selectedMail)return selectedMail
-else return mailService.createMail()
+export function SentMail({ closeModel, onSentMail, selectedMail, setSentMail }) {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const initialMail = mailService.getComposeDataFromSearchParams(searchParams)
+
+    const [mail, setMail] = useState(() => {
+        if (selectedMail) return selectedMail
+        return mailService.createMail(initialMail.subject, initialMail.body, initialMail.to)
     })
 
+    useEffect(() => {
+        const updatedParams = new URLSearchParams(searchParams)
+
+        updatedParams.set('to', mail.to || '')
+        updatedParams.set('subject', mail.subject || '')
+        updatedParams.set('body', mail.body || '')
+        setSearchParams(updatedParams)
+    }, [mail])
 
     function sentMailTo(ev) {
         ev.preventDefault()
         const updatedMail = { ...mail, sentAt: Date.now() }
-        console.log('saved')
         onSentMail(updatedMail)
         closeModel(false)
     }
+
     function pushToDraft() {
         onSentMail(mail)
-        console.log('push To Draft');
-
     }
+
     function handleChange({ target }) {
         setMail({ ...mail, [target.name]: target.value })
     }
-
 
     return (
         <section className="sent-mail-model">
@@ -35,22 +46,21 @@ else return mailService.createMail()
                     pushToDraft()
                 }}>x</button>
             </div>
-            <form onSubmit={(event) => sentMailTo(event)}>
+            <form onSubmit={sentMailTo}>
                 <div className="input-to">
                     <label htmlFor="to">To:</label>
-                    <input className="input" type="email" name="to" onChange={handleChange} id="to"  value={mail.to||""}/>
+                    <input className="input" type="email" name="to" onChange={handleChange} id="to" value={mail.to || ""} />
                 </div>
                 <div className="input-subject">
                     <label htmlFor="subject"></label>
-                    <input className="input" type="text" name="subject" placeholder="Subject" onChange={handleChange} id="subject" value={mail.subject||""}/>
+                    <input className="input" type="text" name="subject" placeholder="Subject" onChange={handleChange} id="subject" value={mail.subject || ""} />
                 </div>
                 <div className="input-body">
                     <label htmlFor="body"></label>
-                    <input className="input" type="text" name="body" onChange={handleChange} id="body" value={mail.body||""}/>
+                    <input className="input" type="text" name="body" onChange={handleChange} id="body" value={mail.body || ""} />
                 </div>
                 <button className="send-btn">Send</button>
             </form>
-
         </section>
     )
 }

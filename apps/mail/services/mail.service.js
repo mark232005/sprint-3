@@ -15,7 +15,9 @@ export const mailService = {
     remove,
     getDefaultMailFilter,
     loggedinUser,
-    createMail
+    createMail,
+    getFilterFromSearchParams,
+    getComposeDataFromSearchParams
 }
 
 const KEY = 'mailsDB'
@@ -38,25 +40,25 @@ function query(filterBy = {}) {
             if (filterBy.read) {
                 mails = mails.filter(mail => mail.isRead === filterBy.read)
             }
-            if(filterBy.status==='sent'){
-                mails=mails.filter(mail=>mail.from===loggedinUser.email)
+            if (filterBy.status === 'sent') {
+                mails = mails.filter(mail => mail.from === loggedinUser.email)
             }
-            if(filterBy.status==='draft'){
-                mails=mails.filter(mail=>mail.sentAt===null)
+            if (filterBy.status === 'draft') {
+                mails = mails.filter(mail => mail.sentAt === null)
             }
-            if (filterBy.status==='inbox'){
-                mails=mails.filter(mail=>
-                    mail.sentAt!==null && mail.from!==loggedinUser.email&& mail.removedAt===null
+            if (filterBy.status === 'inbox') {
+                mails = mails.filter(mail =>
+                    mail.sentAt !== null && mail.from !== loggedinUser.email && mail.removedAt === null
                 )
             }
-            if(filterBy.status==='trash'){
-                mails=mails.filter(mail=>
-                    mail.removedAt!==null)
+            if (filterBy.status === 'trash') {
+                mails = mails.filter(mail =>
+                    mail.removedAt !== null)
 
             }
-            if(filterBy.status==='starred'){
-                mails=mails.filter(mail=>
-                    mail.starred!==false)
+            if (filterBy.status === 'starred') {
+                mails = mails.filter(mail =>
+                    mail.starred !== false)
             }
             return mails
         })
@@ -84,7 +86,7 @@ function getDefaultMailFilter() {
         search: '',
         isRead: false,
         isStared: false,
-        labels: [] 
+        labels: []
     }
 }
 
@@ -100,7 +102,7 @@ var gMails = [
         removedAt: null,
         from: 'Mia@gmail.com',
         to: 'user@appsus.com',
-        starred:true
+        starred: true
     },
     {
         id: 'e102',
@@ -112,7 +114,7 @@ var gMails = [
         removedAt: null,
         from: 'user@appsus.com',
         to: 'dima@gmail.com',
-        starred:false
+        starred: false
 
     },
     {
@@ -125,7 +127,7 @@ var gMails = [
         removedAt: null,
         from: 'mark@gmail.com',
         to: 'user@appsus.com',
-        starred:false
+        starred: false
     },
     {
         id: 'e104',
@@ -137,24 +139,41 @@ var gMails = [
         removedAt: null,
         from: 'user@appsus.com',
         to: 'momo@momo.com',
-        starred:false
+        starred: false
 
     }
 
 ]
 
-function createMail(subject,body,to){
+function createMail(subject, body, to) {
     return {
-        createdAt:Date.now(),
-        subject: subject||"",
-        body: body||"",
+        createdAt: Date.now(),
+        subject: subject || "",
+        body: body || "",
         sentAt: null,
         removedAt: null,
         from: loggedinUser.email,
-        starred:false,
-        to: to||""
+        starred: false,
+        to: to || ""
 
     }
 
+}
+
+function getFilterFromSearchParams(searchParams) {
+    return {
+        to: searchParams.get('to') || '',
+        subject: searchParams.get('subject') || '',
+        body: searchParams.get('body') || ''
+    }
+}
+
+
+function getComposeDataFromSearchParams(searchParams) {
+    return {
+        to: searchParams.get('to') || '',
+        subject: searchParams.get('subject') || '',
+        body: searchParams.get('body') || ''
+    }
 }
 

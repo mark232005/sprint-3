@@ -6,13 +6,16 @@ import { SortMails } from "../cmps/SortMail.jsx"
 import { mailService } from "../services/mail.service.js"
 import { MailDetails } from "./MailDetails.jsx"
 
+const { useSearchParams } = ReactRouterDOM
 
 
 const { useEffect, useState } = React
 export function MailIndex() {
+    const [searchParams] = useSearchParams()
+
     const [selectedMail, setSelectedMail] = useState(null)
     const [mails, setMails] = useState(null)
-    const [sentMail, setSentMail] = useState(null)
+    const [sentMail, setSentMail] = useState(false)
     const [mailFilter, setMailFilter] = useState(mailService.getDefaultMailFilter())
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isSortByDate, setIsSortByDate] = useState(false)
@@ -20,6 +23,15 @@ export function MailIndex() {
     useEffect(() => {
         loadMails()
     }, [mailFilter])
+
+    useEffect(() => {
+        const subject = searchParams.get('subject')
+        const body = searchParams.get('body')
+
+        if (subject || body) {
+            setSentMail(true)   
+        }
+    }, [searchParams])
 
     function loadMails() {
         mailService.query(mailFilter).then(
