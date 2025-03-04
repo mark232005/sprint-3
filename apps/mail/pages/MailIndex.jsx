@@ -40,7 +40,6 @@ export function MailIndex() {
         )
     }
 
-
     function onSentMail(mail) {
         mailService.save(mail).then(savedMail => {
             setMails(prevMails => prevMails.map(prevMail =>
@@ -127,6 +126,21 @@ export function MailIndex() {
         )
     }
 
+    function onReadMail(mailId) {
+        mailService.getById(mailId).then((oldMail) => {
+            const updatedMail = { ...oldMail, isRead: true };
+            mailService.save(updatedMail).then((savedMail) => {
+                setMails((prevMails) => {
+                    return prevMails.map((mail) =>
+                        mail.id === savedMail.id ? savedMail : mail
+                    );
+                });
+            });
+        });
+    }
+    
+    console.log(mails)
+
     if (!mails) return "Loading...."
     return (
         <section className="mail-container grid">
@@ -145,7 +159,8 @@ export function MailIndex() {
                 {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash}
                     onStarred={onStarred} mailFilter={mailFilter} onDraftMail={onDraftMail} />}
 
-                {selectedMail && <MailDetails mailId={selectedMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} setSentMail={setSentMail} onMoveToTrash={onMoveToTrash}/>}
+                {selectedMail && <MailDetails mailId={selectedMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail}
+                    setSentMail={setSentMail} onMoveToTrash={onMoveToTrash} onReadMail={onReadMail} />}
                 {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} selectedMail={selectedMail} setSentMail={setSentMail} />}
 
 
