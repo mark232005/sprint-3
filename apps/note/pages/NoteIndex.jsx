@@ -157,16 +157,20 @@ export function NoteIndex() {
                         />
                     </div>
                     <div>
-                        <div>
-                            <h3>Pinned Notes</h3>
-                            <NoteList
-                                notes={pinnedNotes}
-                                onRemoveNote={onRemoveNote}
-                                onUpdateNote={onUpdateNote}
-                                onDuplicateNote={onDuplicateNote}
-                                onTogglePin={onTogglePin}
-                            />
-                        </div>
+                        {pinnedNotes.length > 0 && (
+
+                            <div>
+                                <h3>Pinned Notes</h3>
+                                <NoteList
+                                    notes={pinnedNotes}
+                                    onRemoveNote={onRemoveNote}
+                                    onUpdateNote={onUpdateNote}
+                                    onDuplicateNote={onDuplicateNote}
+                                    onTogglePin={onTogglePin}
+                                />
+                            </div>
+                        )}
+                        {unpinnedNotes.length > 0 && (
                         <div>
                             <h3>Other Notes</h3>
                             <NoteList
@@ -177,6 +181,7 @@ export function NoteIndex() {
                                 onTogglePin={onTogglePin}
                             />
                         </div>
+                        )}
                     </div>
                 </div>
             </div>
