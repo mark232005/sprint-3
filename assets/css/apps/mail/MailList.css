@@ -40,8 +40,9 @@ body {
 }
 
 .a-mail-preview {
-    justify-items: baseline;
+    /* justify-items: baseline; */
     grid-column: 3/4;
+    align-items: anchor-center;
 }
 
 .date-mail {

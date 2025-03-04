@@ -2,7 +2,11 @@
     display: flex;
     justify-content: space-between;
     padding: 1em;
-    background: var(--bg1);
+    background: #89A8B2;
+    border-bottom: 1px solid #564d4d56;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+
 }
 
 nav a {
@@ -10,7 +14,7 @@ nav a {
 }
 
 nav a.active {
-    color: var(--color1);
+    color: #E5E1DA;
     font-weight: bold;
-    text-decoration: overline;
+    
 }
