@@ -1,15 +1,22 @@
 
+.fa-solid.fa-palette{
+    position: relative;
+}
 .color-input{
     display: flex;
     flex-direction: row;
-    z-index: 100;
     position: absolute;
+    bottom: -40px;
+    right: 95px;
+    /* left: 20px; */
+
 
 }
 
 .color-option {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+
     align-items: center;
     border: whitesmoke 3px solid;
     padding: 5px;
@@ -19,7 +26,6 @@
     cursor: pointer;
     transition: 0.2s border-width;
     border-radius: 20px;
-    top: 10%;
 }
 
 

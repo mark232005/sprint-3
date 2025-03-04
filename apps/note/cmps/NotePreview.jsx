@@ -88,13 +88,14 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                         e.stopPropagation();
                         setShowColorPicker(!showColorPicker);
                     }}></i>
-                    <i
-                        className={`fa-thumbtack ${note.isPinned ? 'pinned' : ''}`}
+                    <i className={`fa-solid ${note.isPinned ? 'fa-thumbtack-slash' : 'fa-thumbtack'}`}
                         onClick={(e) => {
                             e.stopPropagation()
                             onTogglePin(note.id)
                         }}
                     ></i>
+                    </div>
+                    <div>
                     {showColorPicker && (
                         <div onClick={(e) => e.stopPropagation()}>
                             <ColorInput
