@@ -1,15 +1,52 @@
+import { noteService } from '../services/note.service.js'
+
+const { useState, useEffect } = React
+const { useSearchParams } = ReactRouterDOM
+
 export function NoteAddNew({
-    noteType,
     inputPlaceholder,
-    newNoteText,
     handleInputChange,
     handleNoteTypeChange,
     handleTodoTypeChange,
     todos,
     handleTodoChange,
     addTodo,
-    onCreateNewNote
+    onCreateNewNote,
+    noteType,
+    newNoteText,
+    resetNoteForm,
 }) {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const [currentText, setCurrentText] = useState(searchParams.get('txt') || '')
+
+    useEffect(() => {
+        setCurrentText(searchParams.get('txt') || '')
+    }, [searchParams])
+
+    useEffect(() => {
+        const params = new URLSearchParams()
+
+        if (currentText) {
+            params.set('txt', currentText)
+        } else {
+            params.delete('txt')
+        }
+
+        setSearchParams(params)
+    }, [currentText])
+
+    function handleLocalInputChange(ev) {
+        handleInputChange(ev)
+        setCurrentText(ev.target.value)
+    }
+
+    function handleClose() {
+        onCreateNewNote(currentText)
+        resetNoteForm()
+        setCurrentText('')  
+        setSearchParams({})  
+    }
 
     return (
         <div className={`create-note-field ${noteType ? 'active' : ''}`}>
@@ -17,8 +54,8 @@ export function NoteAddNew({
                 <input
                     type="text"
                     placeholder={inputPlaceholder}
-                    value={newNoteText}
-                    onChange={handleInputChange}
+                    value={currentText}
+                    onChange={handleLocalInputChange}
                 />
                 <div className="note-icons">
                     <i className="fa-regular fa-message" onClick={() => handleNoteTypeChange('NoteTxt')}></i>
@@ -33,7 +70,8 @@ export function NoteAddNew({
                         <div
                             key={idx}
                             className={`todo-item header ${idx === todos.length - 1 ? 'last-todo header' : ''}`}
-                        >   <div>
+                        >
+                            <div>
                                 <input type="checkbox" />
                                 <input
                                     type="text"
@@ -51,12 +89,10 @@ export function NoteAddNew({
                     ))}
                 </div>
             )}
-
-            {noteType && (
-                <div className="bottom-panel">
-                    <i className="fa-regular fa-floppy-disk save-button" onClick={onCreateNewNote}>Close</i>
-                </div>
-            )}
+            {noteType &&(
+            <div className="bottom-panel">
+                <i className="fa-regular fa-floppy-disk save-button" onClick={handleClose}>Close</i>
+            </div>)}
         </div>
     )
 }

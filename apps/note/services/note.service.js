@@ -11,6 +11,7 @@ export const noteService = {
     getEmptyNote,
     getDefaultFilter,
     getFilterFromSearchParams,
+    getNoteDataFromSearchParams,
 }
 
 function query(filterBy = {}) {
@@ -131,4 +132,13 @@ function getNoteColor(type) {
         'NoteMap': '#795548'  // Brown
     }
     return colors[type] || '#FFFFFF'
+}
+
+function getNoteDataFromSearchParams(searchParams) {
+    return {
+        type: searchParams.get('type') || 'NoteTxt',
+        txt: searchParams.get('txt') || '',
+        imgUrl: searchParams.get('imgUrl') || '',
+        todos: searchParams.getAll('todo') || []
+    }
 }

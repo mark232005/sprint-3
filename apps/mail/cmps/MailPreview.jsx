@@ -24,6 +24,13 @@ export function MailPreview({ mail, setSelectedMail, moveToTrash,onStarred,mailF
         starredMail(mail.id)
     }
 
+    function sentToNote(mail) {
+        const body = encodeURIComponent(mail.body)
+    
+        const url = `#/note?txt=${body}`
+        window.location.href = url
+    }
+
     function starredMail(mailId){
         mailService.getById(mailId).then(mail=>{
             if(isStar){
@@ -58,7 +65,7 @@ export function MailPreview({ mail, setSelectedMail, moveToTrash,onStarred,mailF
                 <div className="email-buttons">
                     <img className="trash-img-mail " src="assets/img/trash-img.svg" onClick={() => moveToTrash(mail.id)} />
                     <img className="read-img-mail" src={isRead ? " assets/img/mail-open-img.svg" : "assets/img/unread-img.svg"} />
-                    <img className="share-img" src="assets/img/share-img.svg" />
+                    <img onClick={()=>sentToNote(mail)}className="share-img" src="assets/img/share-img.svg" />
                 </div>
             </span>
         </section>

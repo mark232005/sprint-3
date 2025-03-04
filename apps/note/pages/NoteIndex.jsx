@@ -20,11 +20,19 @@ export function NoteIndex() {
     const unpinnedNotes = notes.filter(note => !note.isPinned)
 
     const [selectedNote, setSelectedNote] = useState(null)
+    
 
 
 
     function handelNoteClick(note) {
         setSelectedNote(note)
+    }
+
+    function resetNoteForm() {
+        setNewNoteText('')
+        setNoteType('')
+        setTodos([])
+        setInputPlaceholder('Insert your note')
     }
 
     function closeModal() {
@@ -64,8 +72,8 @@ export function NoteIndex() {
         setTodos([...todos, { txt: '', doneAt: null }]);
     }
 
-    function onCreateNewNote() {
-        if (!newNoteText.trim()) return;
+    function onCreateNewNote(currentText) {
+        if (!currentText.trim()) return;
 
         const newNote = noteService.getEmptyNote();
         newNote.type = noteType;
@@ -81,7 +89,7 @@ export function NoteIndex() {
                 todos
             }
         } else {
-            newNote.info = { txt: newNoteText };
+            newNote.info = { txt: currentText };
         }
         noteService.save(newNote).then(savedNote => {
             setNotes(prevNotes => [...prevNotes, savedNote]);
@@ -165,6 +173,7 @@ export function NoteIndex() {
                             handleTodoChange={handleTodoChange}
                             addTodo={addTodo}
                             onCreateNewNote={onCreateNewNote}
+                            resetNoteForm={resetNoteForm}
                         />
                     </div>
 
@@ -199,14 +208,14 @@ export function NoteIndex() {
 
                 </div>
             </div>
-            
+
             {selectedNote && (
-            <NoteEditModal
-                note={selectedNote}
-                onUpdateNote={onUpdateNote}
-                closeModal={closeModal}
-            />
-        )}
+                <NoteEditModal
+                    note={selectedNote}
+                    onUpdateNote={onUpdateNote}
+                    closeModal={closeModal}
+                />
+            )}
         </section>
     )
 }
