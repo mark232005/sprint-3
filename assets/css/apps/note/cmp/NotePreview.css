@@ -1,12 +1,12 @@
 .note-preview {
-    max-width: 238px;
+    min-width: 210px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    border: 1px solid #564d4d56;
+    border: 0.5px solid #80787856;
 
  }
 
@@ -40,8 +40,9 @@
  .note-preview .todo-item {
     display: flex;
     align-items: anchor-center;
-    width: 239px;
+    width: 200px;
     margin-left: 5px;
+    overflow: scroll;
  }
 
  .todo-item .done {

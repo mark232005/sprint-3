@@ -30,6 +30,7 @@ body.active-modal {
     background: white;
     border-radius: 8px;
     overflow: hidden;
+    
 }
 
 .modal-content-wrapper {
@@ -38,6 +39,7 @@ body.active-modal {
    display: flex;
    justify-content: center;
    align-items: center;
+   
 }
 
 .ToDo-List{
