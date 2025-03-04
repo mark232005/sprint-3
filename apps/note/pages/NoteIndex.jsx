@@ -3,6 +3,7 @@ import { NoteList } from '../cmps/NoteList.jsx';
 import { NodeFilter } from '../cmps/NodeFilter.jsx';
 import { NoteAddNew } from '../cmps/NoteAddNew.jsx';
 import { NoteMainFilterHeader } from '../cmps/NoteMainFilterHeader.jsx';
+import { NoteEditModal } from '../cmps/NoteEditModal.jsx';
 
 
 const { useState, useEffect } = React;
@@ -18,7 +19,17 @@ export function NoteIndex() {
     const pinnedNotes = notes.filter(note => note.isPinned)
     const unpinnedNotes = notes.filter(note => !note.isPinned)
 
+    const [selectedNote, setSelectedNote] = useState(null)
 
+
+
+    function handelNoteClick(note) {
+        setSelectedNote(note)
+    }
+
+    function closeModal() {
+        setSelectedNote(null)
+    }
     useEffect(() => {
         loadNotes();
     }, [filterBy]);
@@ -156,21 +167,21 @@ export function NoteIndex() {
                             onCreateNewNote={onCreateNewNote}
                         />
                     </div>
-                    <div>
-                        {pinnedNotes.length > 0 && (
 
-                            <div>
-                                <h3>Pinned Notes</h3>
-                                <NoteList
-                                    notes={pinnedNotes}
-                                    onRemoveNote={onRemoveNote}
-                                    onUpdateNote={onUpdateNote}
-                                    onDuplicateNote={onDuplicateNote}
-                                    onTogglePin={onTogglePin}
-                                />
-                            </div>
-                        )}
-                        {unpinnedNotes.length > 0 && (
+                    {pinnedNotes.length > 0 && (
+                        <div>
+                            <h3>Pinned Notes</h3>
+                            <NoteList
+                                notes={pinnedNotes}
+                                onRemoveNote={onRemoveNote}
+                                onUpdateNote={onUpdateNote}
+                                onDuplicateNote={onDuplicateNote}
+                                onTogglePin={onTogglePin}
+                                handelNoteClick={handelNoteClick}
+                            />
+                        </div>
+                    )}
+                    {unpinnedNotes.length > 0 && (
                         <div>
                             <h3>Other Notes</h3>
                             <NoteList
@@ -179,12 +190,23 @@ export function NoteIndex() {
                                 onUpdateNote={onUpdateNote}
                                 onDuplicateNote={onDuplicateNote}
                                 onTogglePin={onTogglePin}
+                                handelNoteClick={handelNoteClick}
+
                             />
                         </div>
-                        )}
-                    </div>
+                    )}
+
+
                 </div>
             </div>
+            
+            {selectedNote && (
+            <NoteEditModal
+                note={selectedNote}
+                onUpdateNote={onUpdateNote}
+                closeModal={closeModal}
+            />
+        )}
         </section>
     )
 }
