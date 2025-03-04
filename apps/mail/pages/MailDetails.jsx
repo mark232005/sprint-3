@@ -3,7 +3,7 @@ import { mailService } from "../services/mail.service.js"
 const { useState, useEffect } = React
 
 
-export function MailDetails({ mailId }) {
+export function MailDetails({ mailId,setMailFilter, setSelectedMail ,setSentMail,onMoveToTrash}) {
     const [currMail, setCurrMail] = useState(null)
     useEffect(() => {
         loadMail()
@@ -15,6 +15,12 @@ export function MailDetails({ mailId }) {
         )
 
     }
+    function moveToTrash(){
+        
+        onMoveToTrash(mailId)
+        setSelectedMail(null)
+    }
+
 
     if (!currMail) return
     const { body, subject, from, to } = currMail
@@ -22,7 +28,7 @@ export function MailDetails({ mailId }) {
     return (
         <section className="mail-details grid">
             <div>
-                <NavbarDetails />
+                <NavbarDetails setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} setSentMail={setSentMail} moveToTrash={moveToTrash}/>
 
             </div>
             <div>

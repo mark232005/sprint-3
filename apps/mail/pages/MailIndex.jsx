@@ -127,7 +127,6 @@ export function MailIndex() {
         )
     }
 
-
     if (!mails) return "Loading...."
     return (
         <section className="mail-container grid">
@@ -146,8 +145,8 @@ export function MailIndex() {
                 {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash}
                     onStarred={onStarred} mailFilter={mailFilter} onDraftMail={onDraftMail} />}
 
-                {selectedMail && <MailDetails mailId={selectedMail} />}
-                {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} selectedMail={selectedMail} />}
+                {selectedMail && <MailDetails mailId={selectedMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail} setSentMail={setSentMail} onMoveToTrash={onMoveToTrash}/>}
+                {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} selectedMail={selectedMail} setSentMail={setSentMail} />}
 
 
             </main>

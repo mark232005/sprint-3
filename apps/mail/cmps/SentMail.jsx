@@ -2,7 +2,7 @@ import { mailService } from "../services/mail.service.js"
 
 
 const { useState } = React
-export function SentMail({ closeModel, onSentMail,selectedMail }) {
+export function SentMail({ closeModel, onSentMail,selectedMail,setSentMail}) {
     const [mail, setMail] = useState(()=>{
 if(selectedMail)return selectedMail
 else return mailService.createMail()
