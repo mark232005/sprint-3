@@ -55,6 +55,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                                 type="checkbox"
                                 checked={!!todo.doneAt}
                                 onChange={() => toggleTodoStatus(note, note.id, idx)}
+                                onClick={(e) => e.stopPropagation()}
                             />
                             <li className={todo.doneAt ? 'done' : ''}>{todo.txt}</li>
                         </div>))}
