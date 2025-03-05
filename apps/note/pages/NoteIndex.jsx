@@ -97,7 +97,8 @@ export function NoteIndex() {
             newNote.info = { txt: txt };
         }
         noteService.save(newNote).then(savedNote => {
-            return setNotes(prevNotes => [...prevNotes, savedNote])
+             setNotes(prevNotes => [...prevNotes, savedNote])
+             return loadNotes()
             
             
 
