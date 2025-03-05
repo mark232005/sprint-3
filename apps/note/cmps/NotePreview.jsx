@@ -16,6 +16,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
         setNoteColor(color)
         const updateNoteStyle = { ...note, style: { ...note.style, backgroundColor: color } }
         onUpdateNote(updateNoteStyle)
+        setShowColorPicker(false)
     }
 
 
