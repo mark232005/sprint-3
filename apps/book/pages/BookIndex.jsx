@@ -1,4 +1,3 @@
-// import { bookService } from '../services/book.service.js'
 import { bookService } from '../service/book.service.js'
 import { BookList } from '../cmps/BookList.jsx'
 import { BookFilter } from '../cmps/BookFilter.jsx'
@@ -15,15 +14,15 @@ export function BookIndex() {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [books, setBooks] = useState(null)
-    const [filterBy, setFilterBy] = useState(bookService.getFilterFromSearchParams(searchParams))
+    const [filterBy, setFilterBy] = useState()
     
 
 
 
     useEffect(() => {
-        setSearchParams(filterBy)
+        // setSearchParams(filterBy)
         loadBooks()
-    }, [filterBy])
+    }, [])
 
     function loadBooks() {
         bookService.query(filterBy)
@@ -55,7 +54,7 @@ export function BookIndex() {
 
     return (
         <section className="book-index">
-            <BookFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+            {/* <BookFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} /> */}
             <button>
                 <Link to="/bookIndex/edit">Add New Book</Link>
             </button>

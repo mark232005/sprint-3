@@ -1,5 +1,12 @@
 export const utilService = {
     makeId,
+    loadFromStorage,
+    makeLorem,
+    getRandomIntInclusive,
+    saveToStorage,
+    capitalizeTitle,
+    debounce
+
 
 }
 

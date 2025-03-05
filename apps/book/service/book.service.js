@@ -89,7 +89,7 @@ function getFilterFromSearchParams(searchParams) {
     const defaultFilter = getDefaultFilter()
     const filterBy = {}
     for (const field in defaultFilter) {
-        filterBy[field] = searchParams.get(field) ||
+        filterBy[field] = searchParams .get(field) ||
             defaultFilter[field]
     }
     return filterBy
@@ -154,7 +154,7 @@ function _createBooks() {
     if (!storedBooks || !storedBooks.length) {
         console.log('Creating books database...')
         storedBooks = books.map(book => _createBookFromData(book))
-        saveToStorage(BOOK_KEY, storedBooks)
+        utilService.saveToStorage(BOOK_KEY, storedBooks)
     }
 }
 
