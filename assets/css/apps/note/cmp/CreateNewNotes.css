@@ -69,6 +69,10 @@
     display: flex;
 
  }
+ .note-icons i {
+   cursor: pointer;
+
+ }
 
 
  .bottom-panel {
