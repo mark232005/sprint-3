@@ -107,13 +107,21 @@ export function NoteIndex() {
         })
     }
     function onTogglePin(noteId) {
-        setNotes(prevNotes =>
-            sortNotes(
-                prevNotes.map(note =>
-                    note.id === noteId ? { ...note, isPinned: !note.isPinned } : note
+        const noteToToggle = notes.find(note => note.id === noteId)
+    
+        if (!noteToToggle) return
+    
+        const updatedNote = { ...noteToToggle, isPinned: !noteToToggle.isPinned }
+    
+        noteService.save(updatedNote).then(() => {
+            setNotes(prevNotes =>
+                sortNotes(
+                    prevNotes.map(note =>
+                        note.id === noteId ? updatedNote : note
+                    )
                 )
             )
-        )
+        })
     }
 
     function onSetFilter(newFilter) {
