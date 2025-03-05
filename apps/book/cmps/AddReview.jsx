@@ -2,7 +2,7 @@ const { useState, useRef, useEffect } = React
 
 
 import { StarRating } from "./dynamic-inputs/StarRating.jsx"
-import { reviewService } from '../services/review.service.js'
+import { reviewService } from "../service/review.service.js"
 
 
 export function AddReview({ onSaveReview, toggleReview }) {
