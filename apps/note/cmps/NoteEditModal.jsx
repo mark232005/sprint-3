@@ -139,7 +139,7 @@ export function NoteEditModal({ note, onUpdateNote, closeModal }) {
                             </div>
                         )}
                         <div className="modal-buttons">
-                            <i className="fa-regular fa-floppy-disk" onClick={onSave}>Save</i>
+                            <i className="fa-regular fa-floppy-disk" onClick={onSave}>Close</i>
                         </div>
                     </div>
                 </div>
