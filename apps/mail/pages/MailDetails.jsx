@@ -43,7 +43,7 @@ export function MailDetails({ mailId,setMailFilter, setSelectedMail ,setSentMail
 
                 </div>
                 <p className="main-txt-mail">{body}</p>
-            <button className="replay-btn flex">  <img className="replay-img"src="assets/img/reply.svg" />Replay</button>
+            <button className="replay-btn flex" onClick={()=>setSentMail(true)}> <img className="replay-img"src="assets/img/reply.svg" />Replay</button>
             </div>
         </section>
 
