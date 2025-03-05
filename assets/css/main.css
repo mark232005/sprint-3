@@ -29,3 +29,15 @@
 @import './apps/mail/MailDetails.CSS';
 
 
+
+@import './apps/book/add-review.css';
+@import './apps/book/app-header.css';
+@import './apps/book/book-details.css';
+@import './apps/book/book-edit.css';
+@import './apps/book/book-filter.css';
+@import './apps/book/book-list.css';
+@import './apps/book/LongTxt.jsx';
+@import './apps/book/star-rating.css';
+@import './apps/book/user-msg.css';
+
+

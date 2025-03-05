@@ -1,0 +1,71 @@
+.book-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0.5rem auto 0;
+    align-items: start;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+
+.book-details-info {
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem;
+    font-size: 1.2em;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+.book-details-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.book-details-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.book-details-header {
+    grid-column: 1 / 2;
+    font: 2em sans-serif;
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+
+}
+
+.book-details-on-sale {
+    align-self: center;
+    justify-self: center;
+    background-color: green;
+    border: 2px solid black;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.5rem;
+    width: 270px;
+
+}
+
+.book-details-image {
+    justify-self: center;
+}
+
+
+.brake-line {
+    height: 2px;
+    background: black;
+    width: 100%;
+}

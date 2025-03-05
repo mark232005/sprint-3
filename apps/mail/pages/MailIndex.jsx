@@ -128,7 +128,6 @@ export function MailIndex() {
         })
     }
     function onDraftMail(mailId) {
-        console.log(mailId);
         mailService.getById(mailId).then(mail => {
             const { to, subject, body } = mail
             const newMail = mailService.createMail(subject, body, to)
@@ -151,7 +150,6 @@ export function MailIndex() {
         });
     }
     
-    console.log(mails)
 
     if (!mails) return "Loading...."
     return (
