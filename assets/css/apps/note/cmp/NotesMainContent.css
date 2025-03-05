@@ -38,10 +38,30 @@
 
 
 @media (max-width: 600px) {
-    .note-list .item {
-        flex: 1 1 100%; /* Full width on smaller screens */
+    .note-list {
+        flex-direction: column;  
+        align-items: center;     
+        justify-content: flex-start; 
+        gap: 10px;
+        margin-top: 5px;
+
     }
+
+    .note-item {
+        width: calc(100% - 12px); 
+        box-sizing: border-box;
+    }
+
+    .filter-nav-bar{
+        display: none;
+    }
+
+    .google-keep-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+
 }
-
-
- 
