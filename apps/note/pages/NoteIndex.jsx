@@ -76,7 +76,7 @@ export function NoteIndex() {
     function onCreateNewNote(txt, type) {
         if (!txt.trim()) return;
 
-        const newNote = noteService.getEmptyNote();
+        const newNote = noteService.getEmptyNote(type);
         newNote.type = type
 
         if (noteType === 'NoteImg') {

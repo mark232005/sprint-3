@@ -123,7 +123,7 @@ function _initializeNotes() {
 
 function getNoteColor(type) {
     const colors = {
-        'NoteTxt': '#FFDDC1',
+        'NoteTxt': '#FFF7F3',
         'NoteImg': '#FFCBCB',
         'NoteVideo': '#B5EAD7',
         'NoteTodos': '#E2F0CB', // Blue

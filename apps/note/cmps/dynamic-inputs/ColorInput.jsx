@@ -1,5 +1,5 @@
 export function ColorInput({ value, handleColorChange }) {
-    const colors = ['#F44236', '#9C27B0', '#3F51B5', '#2196F3', '#4caf50']
+    const colors = ['#B3C8CF', '#B7B1F2', '#D0E8C5', '#FFC6C6', '#FFF7F3']
 
     function onSetColor(color) {
         handleColorChange(color)
