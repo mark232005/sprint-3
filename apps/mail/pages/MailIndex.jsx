@@ -44,13 +44,21 @@ export function MailIndex() {
     }
     function onMoveToTrash(mailId) {
         mailService.getById(mailId).then(mail => {
-            mail.removedAt = Date.now()
-            mailService.save(mail).then(
-                upDateMail => setMails(prevMails => prevMails.filter(mail => mail.id !== upDateMail.id))
-            )
-        }
-        )
+            if (mail.removedAt) {
+                mailService.remove(mailId).then(
+                    () => setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
+                )
+            } else {
+                mail.removedAt = Date.now()    
+                mailService.save(mail).then(
+                    updatedMail => {
+                        setMails(prevMails => prevMails.map(mail => mail.id === updatedMail.id ? updatedMail : mail))
+                    }
+                )
+            }
+        })
     }
+    
 
     function onSentMail(mail) {
         mailService.save(mail).then(savedMail => {

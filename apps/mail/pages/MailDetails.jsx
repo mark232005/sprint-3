@@ -25,7 +25,8 @@ export function MailDetails({ mailId,setMailFilter, setSelectedMail ,setSentMail
 
     if (!currMail) return
     const { body, subject, from, to } = currMail
-    const name = from.split('@')
+    const name = from&&from.split('@')[0]
+    
     return (
         <section className="mail-details grid">
             <div>
@@ -35,7 +36,7 @@ export function MailDetails({ mailId,setMailFilter, setSelectedMail ,setSentMail
             <div>
                 <h2 className="subject-details">{subject}</h2>
                 <div className="header-details flex">
-                    <h3 className="name-details">{name[0]}</h3>
+                    <h3 className="name-details">{name}</h3>
                     <p className="mail">
                        {`<${from}>`}
                     </p>
