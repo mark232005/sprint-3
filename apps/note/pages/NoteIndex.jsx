@@ -4,6 +4,10 @@ import { NodeFilter } from '../cmps/NodeFilter.jsx';
 import { NoteAddNew } from '../cmps/NoteAddNew.jsx';
 import { NoteMainFilterHeader } from '../cmps/NoteMainFilterHeader.jsx';
 import { NoteEditModal } from '../cmps/NoteEditModal.jsx';
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
+console.log('NoteIndex eventBusService:', eventBusService)
+
+
 
 
 const { useState, useEffect } = React;
@@ -93,12 +97,14 @@ export function NoteIndex() {
             newNote.info = { txt: txt };
         }
         noteService.save(newNote).then(savedNote => {
-            setNotes(prevNotes => [...prevNotes, savedNote])
-            loadNotes()
+            return setNotes(prevNotes => [...prevNotes, savedNote])
+            
+            
+
+
+        }).then(() => {
             resetNoteForm()
-
-
-        })
+            showSuccessMsg('new note')})
     }
 
     function onRemoveNote(noteId) {
