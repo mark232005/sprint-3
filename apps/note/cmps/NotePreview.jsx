@@ -114,7 +114,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onDuplicateNote,
                         e.stopPropagation();
                         setShowColorPicker(!showColorPicker);
                     }}></i>
-                    <i className={`fa-solid ${note.isPinned ? 'fa-thumbtack-slash' : 'fa-thumbtack'}`}
+                    <i className={`fa-solid ${note.isPinned ? 'fa-solid fa-link-slash' : 'fa-thumbtack'}`}
                         onClick={(e) => {
                             e.stopPropagation()
                             onTogglePin(note.id)

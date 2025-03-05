@@ -13,11 +13,10 @@
 
 
 .note-preview p {
-    text-align: justify;
-    text-justify: inter-word;
-    white-space: nowrap;
-    width: 100%;
     margin-left: 15px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .note-preview h2 {
@@ -72,8 +71,9 @@
 
 }
 
-.fa-solid.fa-thumbtack-slash {
+.fa-link-slash{
     position: absolute;
     top: -7px;
     right: -7px;
 }
+
