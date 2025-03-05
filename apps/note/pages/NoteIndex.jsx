@@ -143,7 +143,7 @@ export function NoteIndex() {
                 isPinned: false
             };
 
-            noteService.save(duplicatedNote).then(loadNotes);
+            noteService.save(duplicatedNote).then(loadNotes)
         })
     }
     function sortNotes(notes) {
