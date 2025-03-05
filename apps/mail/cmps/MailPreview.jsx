@@ -6,7 +6,6 @@ export function MailPreview({ mail, setSelectedMail, moveToTrash,onStarred,mailF
     const [isStar,setIsStar ] = useState(false)
 
     const { from, subject, body, to, sentAt, isRead } = mail
-    console.log(isRead);
     const handleClick = () => {
         console.log(mailFilter);
         if(mailFilter.status==="draft") onDraftMail(mail.id)
