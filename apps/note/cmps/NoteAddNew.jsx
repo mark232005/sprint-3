@@ -19,22 +19,21 @@ export function NoteAddNew({
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [currentText, setCurrentText] = useState(searchParams.get('txt') || '')
+    const [currentType, setCurrentType] = useState('NoteTxt')
+
+
 
     useEffect(() => {
-        setCurrentText(searchParams.get('txt') || '')
-    }, [searchParams])
+        const txt = searchParams.get('txt')
+        const type = searchParams.get('type') || 'NoteTxt'
 
-    useEffect(() => {
-        const params = new URLSearchParams()
-
-        if (currentText) {
-            params.set('txt', currentText)
-        } else {
-            params.delete('txt')
+        if (txt) {
+            onCreateNewNote(txt, type)
+            resetNoteForm()
+            setCurrentText('')
+            setSearchParams({})
         }
-
-        setSearchParams(params)
-    }, [currentText])
+    }, [])
 
     function handleLocalInputChange(ev) {
         handleInputChange(ev)
@@ -42,10 +41,9 @@ export function NoteAddNew({
     }
 
     function handleClose() {
-        onCreateNewNote(currentText)
+        onCreateNewNote(currentText, noteType)
         resetNoteForm()
-        setCurrentText('')  
-        setSearchParams({})  
+        setCurrentText('')
     }
 
     return (
@@ -89,10 +87,10 @@ export function NoteAddNew({
                     ))}
                 </div>
             )}
-            {noteType &&(
-            <div className="bottom-panel">
-                <i className="fa-regular fa-floppy-disk save-button" onClick={handleClose}>Close</i>
-            </div>)}
+            {noteType && (
+                <div className="bottom-panel">
+                    <i className="fa-regular fa-floppy-disk save-button" onClick={handleClose}>Close</i>
+                </div>)}
         </div>
     )
 }

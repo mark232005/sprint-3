@@ -19,8 +19,9 @@ export function NoteIndex() {
     const pinnedNotes = notes.filter(note => note.isPinned)
     const unpinnedNotes = notes.filter(note => !note.isPinned)
 
+
     const [selectedNote, setSelectedNote] = useState(null)
-    
+
 
 
 
@@ -72,11 +73,11 @@ export function NoteIndex() {
         setTodos([...todos, { txt: '', doneAt: null }]);
     }
 
-    function onCreateNewNote(currentText) {
-        if (!currentText.trim()) return;
+    function onCreateNewNote(txt, type) {
+        if (!txt.trim()) return;
 
         const newNote = noteService.getEmptyNote();
-        newNote.type = noteType;
+        newNote.type = type
 
         if (noteType === 'NoteImg') {
             newNote.info = {
@@ -89,12 +90,14 @@ export function NoteIndex() {
                 todos
             }
         } else {
-            newNote.info = { txt: currentText };
+            newNote.info = { txt: txt };
         }
         noteService.save(newNote).then(savedNote => {
-            setNotes(prevNotes => [...prevNotes, savedNote]);
-            setNewNoteText('');
-            setNoteType('');
+            setNotes(prevNotes => [...prevNotes, savedNote])
+            loadNotes()
+            resetNoteForm()
+
+
         })
     }
 
@@ -174,6 +177,8 @@ export function NoteIndex() {
                             addTodo={addTodo}
                             onCreateNewNote={onCreateNewNote}
                             resetNoteForm={resetNoteForm}
+
+
                         />
                     </div>
 
