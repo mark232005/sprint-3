@@ -4,9 +4,14 @@
 .nav-bar{
     background-color: #f1f1f1;
     height: 100vh;
+    width: 70px;
+    position: absolute;
+    top: 10;
+    left: 2;
+    transition: width 1s ease; 
+    z-index: 1000;
 }
 .nav-bar:hover {
-position: absolute;
     width: 223px;
 }
 
@@ -58,28 +63,65 @@ position: absolute;
 }
 
 .menuOpen{
-    margin-left: 223px;
+    margin-left: 160px;
 }
 .open-navb-bar{
     width: 223px;
 
 }
-.open-navb-bar>*.new-msg-btn::after{
-    content: "Compose";
 
+.nav-bar .new-msg-btn::after,
+.nav-bar .inbox-btn::after,
+.nav-bar .starred-btn::after,
+.nav-bar .sent-btn::after,
+.nav-bar .draft-btn::after,
+.nav-bar .trash-btn::after
+{
+    content: "";
+    left: 50px; 
+    opacity: 0; 
+    transform: translateX(-20px) scale(0);
+    transition: opacity 0.5s ease, transform 0.5s ease, font-size 0.5s ease;
 }
-.open-navb-bar .sent-btn::after {
-    content: " Sent";
+
+.nav-bar:hover .new-msg-btn::after,
+.open-navb-bar .new-msg-btn::after{
+    padding-right: 15px;
+    content: "  Compose";
+    opacity: 1;
+    transform: translateX(0) scale(1); 
 }
+
+
+.nav-bar:hover .inbox-btn::after,
 .open-navb-bar .inbox-btn::after {
-    content: " Inbox";
+    content: "  Inbox";
+    opacity: 1;
+    transform: translateX(0) scale(1); 
 }
+
+.nav-bar:hover .starred-btn::after,
 .open-navb-bar .starred-btn::after {
-    content: " Starred";
+    content: "  Starred";
+    opacity: 1;
+    transform: translateX(0) scale(1); 
 }
+.nav-bar:hover .sent-btn::after,
+.open-navb-bar .sent-btn::after{
+    content: "  Sent";
+    opacity: 1;
+    transform: translateX(0) scale(1); 
+}
+.nav-bar:hover .draft-btn::after,
 .open-navb-bar .draft-btn::after {
-    content: " Draft";
+    content: "  Draft";
+    opacity: 1;
+    transform: translateX(0) scale(1); 
 }
-.open-navb-bar .trash-btn::after {
-    content: " Trash";
+.nav-bar:hover .trash-btn::after,
+.open-navb-bar .trash-btn::after{
+    content: "  Trash";
+    opacity: 1;
+    transform: translateX(0) scale(1); 
 }
+
