@@ -13,10 +13,11 @@ export function MailPreview({ mail, setSelectedMail, moveToTrash, onStarred, mai
     }
     const formattedSentAt = new Date(sentAt)
     function formatDate() {
-        const day = formattedSentAt.getDate()
-        const month = formattedSentAt.getMonth() + 1
-        const year = formattedSentAt.getFullYear()
-        return `${day}/${month}/${year}`
+            const day = formattedSentAt.getDate()
+            const month = formattedSentAt.getMonth() + 1
+            const year = formattedSentAt.getFullYear()
+            return `${day}/${month}/${year}`
+        
     }
     function toggleStarBtn() {
         setIsStar(isStar => !isStar)

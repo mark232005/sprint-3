@@ -4,9 +4,9 @@ body {
 }
 
 .main {
-    height: 100vh;
     border-radius: 30px;
     background-color: #ffffff;
+    overflow-y: auto
 }
 
 .mails-list>*:first-child {

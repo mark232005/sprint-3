@@ -58,7 +58,8 @@ function query(filterBy = {}) {
             }
             if (filterBy.status === 'starred') {
                 mails = mails.filter(mail =>
-                    mail.starred !== false)
+                    mail.starred !== false && mail.removedAt === null
+                )
             }
             return mails
         })
