@@ -11,7 +11,7 @@ export function About() {
                 for creating memes and also a website called Misterblog</p>
         </div>
         <div className="container-about">
-            <img className="my-img" src="assets/img/Dima-img.jpg" />
+            <img className="my-img" src="assets/img/Dima-img2.jpg" />
             <h2 className="my-name">Dima</h2>
             <p className="about-me">I am a 33-year-old QA Automation Engineer with three years of experience at TechSee, an AI-driven company specializing in visual customer assistance technologies.
                 In my current role, I am responsible for designing and maintaining automated test frameworks, ensuring the delivery of high-quality and reliable products.
