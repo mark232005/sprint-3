@@ -20,6 +20,7 @@ export function MailIndex() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isSortByDate, setIsSortByDate] = useState(false)
     const [isSortBySubject, setIsSortBySubject] = useState(false)
+    const [isSortByRead, setIsSortByRead] = useState(false)
     useEffect(() => {
         loadMails()
     }, [mailFilter])
@@ -29,7 +30,7 @@ export function MailIndex() {
         const body = searchParams.get('body')
 
         if (subject || body) {
-            setSentMail(true)   
+            setSentMail(true)
         }
     }, [searchParams])
 
@@ -49,7 +50,7 @@ export function MailIndex() {
                     () => setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
                 )
             } else {
-                mail.removedAt = Date.now()    
+                mail.removedAt = Date.now()
                 mailService.save(mail).then(
                     updatedMail => {
                         setMails(prevMails => prevMails.map(mail => mail.id === updatedMail.id ? updatedMail : mail))
@@ -58,7 +59,7 @@ export function MailIndex() {
             }
         })
     }
-    
+
 
     function onSentMail(mail) {
         mailService.save(mail).then(savedMail => {
@@ -91,7 +92,12 @@ export function MailIndex() {
         onSortBySubject(mails)
     }
 
-
+    function toggleSortMailsByRead() {
+        setIsSortByRead(isSortByRead=>!isSortByRead)
+        console.log(isSortByRead);
+        if(!isSortByRead) return loadMails()
+            onSortByRead(mails)
+    }
 
     function onSortBySubject(mails) {
         if (!mails || mails.length === 0) {
@@ -128,6 +134,19 @@ export function MailIndex() {
         const sortedMails = sortMailsByDate([...mails])
         setMails(sortedMails)
     }
+    
+    function onSortByRead(mails) {
+        if (!mails || mails.length === 0) {
+            console.log("No mails to sort")
+            return
+        }
+        const sortedMails = mails.sort((a, b) => {
+            if (a.isRead === b.isRead) return 0
+            return a.isRead ? 1 : -1
+        })
+        
+        setMails(sortedMails)
+}
     function onStarred(mail) {
         mailService.save(mail).then(savedMail => {
             setMails(prevMails => prevMails.map(existingMail =>
@@ -157,7 +176,7 @@ export function MailIndex() {
             });
         });
     }
-    
+
 
     if (!mails) return "Loading...."
     return (
@@ -171,7 +190,8 @@ export function MailIndex() {
             <main className={isMenuOpen ? "main menuOpen grid" : "main grid"}>
                 {
                     !selectedMail && <SortMails mails={mails} toggleSortMailsBySubject={toggleSortMailsBySubject} toggleSortMailsByDate={toggleSortMailsByDate}
-                        isSortByDate={isSortByDate} isSortBySubject={isSortBySubject} />
+                        isSortByDate={isSortByDate} isSortBySubject={isSortBySubject}
+                        toggleSortMailsByRead={toggleSortMailsByRead} />
                 }
 
                 {!selectedMail && <MailList mails={mails} setSelectedMail={setSelectedMail} onMoveToTrash={onMoveToTrash}
@@ -180,7 +200,7 @@ export function MailIndex() {
                 {selectedMail && <MailDetails mailId={selectedMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail}
                     setSentMail={setSentMail} onMoveToTrash={onMoveToTrash} onReadMail={onReadMail} />}
                 {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} selectedMail={selectedMail} setSentMail={setSentMail} />}
-<button className="btn-for-phone none" onClick={()=>setSentMail(true)}>send</button>
+                {/* <button className="btn-for-phone none" onClick={() => setSentMail(true)}>send</button> */}
 
             </main>
 
