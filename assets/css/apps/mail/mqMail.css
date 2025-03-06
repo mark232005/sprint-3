@@ -1,0 +1,76 @@
+
+
+@media (max-width: 768px) {
+    .mail-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .header-container{
+        grid-template-columns: minmax(324px, 500px) minmax(223px, 223px);
+    }
+    .left-header{
+        grid-area: 1/2/2/3;
+        grid-template-columns: minmax(200px, 1fr) minmax(40px,60px);
+        justify-self: end
+    }
+    .main-menu-btn{
+        grid-area: 1/2/2/3;
+    }
+    .mail-preview{
+        display: grid;
+        grid-template-columns: 43px 30px 1fr 72px;
+    }
+    .main{
+        width: 85vh;
+    }
+    .a-mail-preview{
+        grid-template-columns: 168px;
+    }
+    .btn-for-phone{
+        display: block;
+        position: absolute;
+        bottom: 100px;
+        left: 100px;
+         border-radius: 20px;
+         padding: 10px;
+         cursor: pointer;
+         background-color: transparent;
+    }
+    .btn-for-phone:hover{
+        background-color: gainsboro;
+    }
+    .nav-bar {
+        left: auto;  
+        right: 2px;    
+    }
+
+    .menuOpen {
+        margin-left: 0;
+        margin-right: 160px;
+    }
+
+    .open-navb-bar {
+        width: 223px;
+    }
+    
+    .nav-bar .new-msg-btn::after,
+    .nav-bar .inbox-btn::after,
+    .nav-bar .starred-btn::after,
+    .nav-bar .sent-btn::after,
+    .nav-bar .draft-btn::after,
+    .nav-bar .trash-btn::after {
+        left: auto;  
+        right: 50px; 
+    }
+    .mail-preview{
+        grid-template-columns: 43px 30px minmax(100px,475px) 72px;
+    }
+    .sent-mail-model{
+        height: 300px;
+        width: 350px;
+        right: 100px;
+    }
+}
+    
+  
+  

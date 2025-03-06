@@ -180,7 +180,7 @@ export function MailIndex() {
                 {selectedMail && <MailDetails mailId={selectedMail} setMailFilter={setMailFilter} setSelectedMail={setSelectedMail}
                     setSentMail={setSentMail} onMoveToTrash={onMoveToTrash} onReadMail={onReadMail} />}
                 {sentMail && <SentMail closeModel={setSentMail} onSentMail={onSentMail} selectedMail={selectedMail} setSentMail={setSentMail} />}
-
+<button className="btn-for-phone none" onClick={()=>setSentMail(true)}>send</button>
 
             </main>
 
