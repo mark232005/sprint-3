@@ -44,7 +44,7 @@
 .single-book {
     display: inline-block;
     
-    margin-bottom: 15px;
+    margin: 15px;
     background-color: #f5f5f5;
     padding: 1rem;
     box-sizing: border-box;
