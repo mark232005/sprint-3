@@ -1,23 +1,104 @@
-.book-list {
-    list-style: none;
-    padding: 15px 0 0;
-    column-count: 4;
-    column-gap: 15px;
-    margin: 0;
-    border-top: 1px solid #ccc;
-
-}
-
-.book-list li {
+.book-preview {
     display: inline-block;
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 15px;
-    background-color: var(--clr1bg);
+    background-color: #f5f5f5;
     padding: 1rem;
     box-sizing: border-box;
-    break-inside: avoid;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.bookList-section {
-    margin-top: 10px;
+.book-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.book-preview img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.book-preview h2 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.book-preview h3 {
+    font-size: 0.9rem;
+    margin: 0.25rem 0 1rem;
+    color: #666;
+    font-weight: normal;
+}
+
+ 
+
+.single-book {
+    display: inline-block;
+    
+    margin-bottom: 15px;
+    background-color: #f5f5f5;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.single-book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.single-book img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.single-book h2 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.single-book h3 {
+    font-size: 0.9rem;
+    margin: 0.25rem 0 1rem;
+    color: #666;
+    font-weight: normal;
+}
+
+.single-book .actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+}
+
+.single-book button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.single-book button:hover {
+    background-color: #0056b3;
 }
