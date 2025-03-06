@@ -5,14 +5,26 @@ const { Link } = ReactRouterDOM
 export function BookList({ books, onRemoveBook }) {
 
     return (
-        <section>
-            <h2>Book List</h2>
+        <section className='bookList-section'>
+            <h2
+                                    style={{
+                                        alignSelf: 'right',
+                                        margin : '15px'
+                        
+                                    }}>Book List</h2>
             <ul className="book-list">
                 {books.map(book =>
-                    <li key={book.id}>
+                    <li className='single-book' key={book.id}>
                         <BookPreview book={book} />
-                        <section>
-                            <button>
+                        <section
+                            className='book-button'
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-around',
+                                marginTop: '0.5rem',
+                                flexWrap: 'wrap'
+                            }}
+                        >                            <button>
                                 <Link to={`/bookIndex/${book.id}`}>Select</Link>
                             </button>
                             <button>

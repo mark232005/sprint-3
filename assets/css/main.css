@@ -39,5 +39,6 @@
 @import './apps/book/LongTxt.jsx';
 @import './apps/book/star-rating.css';
 @import './apps/book/user-msg.css';
+@import '/apps/book/book-preview.css';
 
 

@@ -15,7 +15,7 @@ export function BookIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [books, setBooks] = useState(null)
     const [filterBy, setFilterBy] = useState()
-    
+
 
 
 
@@ -53,9 +53,21 @@ export function BookIndex() {
     if (!books) return <div>Loading...</div>
 
     return (
-        <section className="book-index">
+        <section className="book-index"
+            style={{
+
+                marginTop: '0.5rem',
+
+            }}>
             {/* <BookFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} /> */}
-            <button>
+            <button
+                        style={{
+                            display : 'flex',
+                            justifySelf : 'flex-end',
+                            alignSelf : 'center',
+                            alignSelf: 'right',
+            
+                        }}>
                 <Link to="/bookIndex/edit">Add New Book</Link>
             </button>
             <BookList
